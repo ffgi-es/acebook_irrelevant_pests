@@ -1,12 +1,11 @@
 language: ruby
 rvm:
- - 2.5
-
-services: 
- - postgresql
-
+- 2.5
+services:
+- postgresql
 before_script:
- - bundle exec rails db:create
- - bundle exec rails db:migrate
-
-
+- bundle exec rails db:create
+- bundle exec rails db:migrate
+deploy:
+  api_key:
+    secure: yxYLkzoG5cTgqL27Jk+V0TgsMJlxmFEvRPyoONkwt/IC2Sg1/IjPF1BUbolPtON1mTIlruLIQUiJBWIGKDKK4jtErt6SrORc5b5hGUWOKJt30b/47o5KJbrwB0PCzqPo+fF/NrxujMmnEP2bMLqQ4x7emgKvO3Who25sCTOgOGaO3uwpJCB2G+F88AsKPoc3qg5x9T6dbVIiytrcT2Auwc35ApEw22dyrCLohpr/WqNySLvepiHoXvF2T2YKd1EnlZYBBLaKHlin/iK50vjQySG5kEuZMkD1BAmpAz3hh4jaUU1V1I2Jd2X1TdjCVAJ+0O3jgY4zCePM91bdJ2k0BDiD25gSz5lxu4KjCgh8w71A4zR7e6pgrCTGRFXJxmBKzXhXH0SI0/FtP0dnY/Ashm6IKjPw2WRMlZaMY4H+6lo88jmmJs28fCKocoHngQQLkIwQ33koWz8xc5nWPjk+g8JK67ISw3qN9SloyvM588/o5ljWZL3d0/uupylhk7tFQOJGAz2FlFwDUKcpkiSqzP+hfAvKga+8oDD/QRv5RAezJl/XWspWfGOY3vq/mZkIpg0JNPmimlOhHW7VsG75tiOfXmIJFwsn8w4WxCVCsGR+G1wv8qo7+zWDv7yrh9dnvacqp7uKm0MGexs5PmhVt3Hx346kzIQiloq2hkSPe0w=
