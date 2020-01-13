@@ -1,6 +1,6 @@
 language: ruby
 rvm:
- - 2.5.0
+ - 2.5
 
 services: 
  - postgresql
@@ -8,3 +8,5 @@ services:
 before_script:
  - bundle exec rails db:create
  - bundle exec rails db:migrate
+
+
