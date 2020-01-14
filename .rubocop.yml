@@ -45,6 +45,7 @@ AllCops:
     - 'bin/**/*'
     - 'config/**/*'
     - 'db/**/*'
+    - '**/vendor/**/*' # This is to ignore Gem ruby files which are loaded in Travis
 
 # Physical Code Size
 # ==================
