@@ -3,4 +3,7 @@ Rails.application.routes.draw do
   root 'posts#index'
 
   resources :posts
+  resources :users
+
+  post 'users/new' => 'users#create'
 end
