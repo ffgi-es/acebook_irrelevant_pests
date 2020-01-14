@@ -13,6 +13,10 @@ class PostsController < ApplicationController
     p @post.message
   end
 
+  def update
+    Post.update(params[:id], :message => params[:post_message])
+    redirect_to "/posts"
+  end
   # def update
   #   respond_to do |format|
   #     if @post.update(post_params)
