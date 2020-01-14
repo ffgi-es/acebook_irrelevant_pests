@@ -10,7 +10,6 @@ class PostsController < ApplicationController
 
   def edit
     @post = Post.find(params[:id])
-    p @post.message
   end
 
   def update
