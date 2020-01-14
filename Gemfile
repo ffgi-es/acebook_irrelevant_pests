@@ -5,7 +5,6 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.1'
 # Use postgresql as the database for Active Record
@@ -38,6 +37,9 @@ group :development, :test do
   gem 'rubocop', '0.71.0'
   gem 'rubocop-rails'
   gem 'selenium-webdriver'
+  gem 'rspec-simplecov'
+  gem 'simplecov'
+  gem 'simplecov-console'
 end
 
 group :development do
