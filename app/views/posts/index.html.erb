@@ -1,5 +1,6 @@
 <% @posts.each do |post| %>
   <p><%= post.message %></p>
+  <a href="/posts/<%= post.id %>/edit">edit</a> <br/>
 <% end %>
 
 <%= link_to new_post_path do %>
