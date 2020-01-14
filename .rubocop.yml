@@ -34,6 +34,18 @@ require: rubocop-rails
 # As you become a better developer you will remove or amend this file according
 # to what you think good code should look like.
 #
+# Ignoring Rails Files
+# ====================
+#
+# Excluding some files from rails that we haven't written and therefore have no need
+# to maintain or lint.
+
+AllCops:
+  Exclude:
+    - 'bin/**/*'
+    - 'config/**/*'
+    - 'db/**/*'
+
 # Physical Code Size
 # ==================
 #
