@@ -14,6 +14,16 @@
 #
 # The `.rspec` file also contains a few flags that are not defaults but that
 # users commonly want.
+
+require 'simplecov'
+require 'rspec/simplecov'
+require 'simplecov-console'
+
+SimpleCov.minimum_coverage 90
+SimpleCov.start 
+RSpec::SimpleCov.start
+SimpleCov.formatter = SimpleCov::Formatter::Console
+
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 RSpec.configure do |config|
