@@ -6,5 +6,15 @@ RSpec.describe UsersController, type: :controller do
       post :create, params: { first_name: 'Jonathan', last_name: 'Palma', email: 'jonathan@gmail.com', password: 1234 }
       expect(User.find_by({ email: 'jonathan@gmail.com' })).to be
     end
+
+    it 'redirects back to users/new if no name provided' do
+      post :create, params: { first_name: '', last_name: 'Palma', email: 'jonathan@example.com', password: 1234 }
+      expect(User.find_by({ email: 'jonathan@example.com' })).not_to be
+    end
+
+    it 'redirects back to users/new if no last name provided' do
+      post :create, params: { first_name: 'Jonathan', last_name: '', email: 'jonathan@example.com', password: 1234 }
+      expect(User.find_by({ email: 'jonathan@example.com' })).not_to be
+    end
   end
 end
