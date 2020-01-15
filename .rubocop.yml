@@ -45,6 +45,7 @@ AllCops:
     - 'bin/**/*'
     - 'config/**/*'
     - 'db/**/*'
+    - 'spec/rails_helper.rb'
     - '**/vendor/**/*' # This is to ignore Gem ruby files which are loaded in Travis
 
 # Physical Code Size
@@ -67,13 +68,6 @@ Metrics/BlockLength:
   Exclude:
     - 'spec/**/*'
     - 'test/**/*'
-
-AllCops:
-  Exclude:
-    - 'bin/**/*'
-    - 'db/**/*'
-    - 'config/**/*'
-    - 'spec/rails_helper.rb'
 
 # Code Style
 # ==========
