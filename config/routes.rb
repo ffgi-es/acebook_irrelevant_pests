@@ -3,4 +3,8 @@ Rails.application.routes.draw do
   root 'posts#index'
 
   resources :posts
+  resources :users
+
+  post 'users/new' => 'users#create'
+  get '/welcome' => 'sessions#index'
 end
