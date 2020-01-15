@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
   
   def new
-    # p "New: #{params}"
+    p "New: #{params}"
     @post = Post.new
   end
 
