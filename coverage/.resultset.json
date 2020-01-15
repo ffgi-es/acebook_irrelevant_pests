@@ -1,34 +1,10 @@
 {
   "RSpec": {
     "coverage": {
-      "/Users/SamFolorunsho/CODE Projects/Makers Academy/acebook_irrelevant_pests/spec/controllers/posts_controller_spec.rb": [
+      "/Users/SamFolorunsho/CODE Projects/Makers Academy/acebook_irrelevant_pests/spec/controllers/pages_controller_spec.rb": [
         1,
         null,
         0,
-        0,
-        0,
-        0,
-        0,
-        null,
-        null,
-        null,
-        0,
-        0,
-        0,
-        0,
-        null,
-        null,
-        0,
-        0,
-        0,
-        null,
-        null,
-        null,
-        0,
-        0,
-        0,
-        0,
-        null,
         null,
         null
       ],
@@ -124,6 +100,6 @@
         1
       ]
     },
-    "timestamp": 1579084748
+    "timestamp": 1579085692
   }
 }
