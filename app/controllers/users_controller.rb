@@ -5,16 +5,13 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.create(user_params)
+    @user = User.new(user_params)
       if @user.save
         user = User.find_by({email: params[:email]})
         redirect_to "/users/#{user.id}"
       else
         flash[:notice] = 'Error.'
-      end  
-
-
-    p user
+      end
   end
 
   def show
@@ -24,7 +21,7 @@ class UsersController < ApplicationController
   private 
 
   def user_params
-    p params.permit(:first_name, :last_name, :email, :password_digest)
+    params.permit(:first_name, :last_name, :email, :password)
     # p "------> #{params}"
 
     # p user = {
