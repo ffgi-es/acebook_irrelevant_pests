@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+  
   def new
     # p "New: #{params}"
     @post = Post.new
@@ -8,6 +9,20 @@ class PostsController < ApplicationController
     # p "Create: #{params}"
     @post = Post.create(post_params)
     redirect_to posts_url
+  end
+
+  def edit
+    @post = Post.find(params[:id])
+  end
+
+  def update
+    Post.update(params[:id], :message => params[:post_message])
+    redirect_to "/posts"
+  end
+
+  def destroy
+    Post.delete(params[:id])
+    redirect_to "/"
   end
 
   def index
@@ -21,4 +36,5 @@ class PostsController < ApplicationController
     # p "Post params #{params}"
     params.require(:post).permit(:message)
   end
+
 end

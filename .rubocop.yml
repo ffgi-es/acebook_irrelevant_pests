@@ -68,6 +68,13 @@ Metrics/BlockLength:
     - 'spec/**/*'
     - 'test/**/*'
 
+AllCops:
+  Exclude:
+    - 'bin/**/*'
+    - 'db/**/*'
+    - 'config/**/*'
+    - 'spec/rails_helper.rb'
+
 # Code Style
 # ==========
 #
