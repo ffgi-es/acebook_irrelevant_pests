@@ -5,4 +5,5 @@ Rails.application.routes.draw do
   resources :posts
 
   post "posts/:id/edit" => "posts#update"
+  delete "posts/:id" => "posts#destroy"
 end
