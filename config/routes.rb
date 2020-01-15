@@ -3,4 +3,12 @@ Rails.application.routes.draw do
   root 'posts#index'
 
   resources :posts
+  resources :users
+
+  post "posts/:id/edit" => "posts#update"
+  delete "posts/:id" => "posts#destroy"
+  
+  post 'users/new' => 'users#create'
+  get '/welcome' => 'sessions#index'
+  
 end
