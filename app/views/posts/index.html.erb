@@ -1,5 +1,4 @@
 <% @posts.reverse.each do |post| %>
-<% p post %>
   <div>
     <p><%= post.message %></p><br/>
     <p><%= post.created_at.strftime("posted on %d/%m/%Y at %H:%M") %></p><br/>
