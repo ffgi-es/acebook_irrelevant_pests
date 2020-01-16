@@ -2,6 +2,10 @@ require 'rails_helper'
 require_relative 'web_helpers'
 
 RSpec.feature "Timeline", type: :feature do
+  before do
+    sign_up
+  end
+  
   scenario "Can submit posts and view them" do
     sign_up
     click_on 'New post'
