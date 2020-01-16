@@ -1,14 +1,18 @@
-<% @posts.each do |post| %>
-  <p><%= post.message %></p><br/>
-  <a href="/posts/<%= post.id %>/edit">Edit</a> 
+<%= link_to 'Log out', "/sessions/#{@user.id}", method: :delete %>
 
-  <%= form_tag post_path(post.id), method: "delete", id: "delete" do %>
-    <%= submit_tag "Delete" %>
-  <% end %>
+<% @posts.reverse.each do |post| %>
+  <div>
+
+    <p><%= post.message %></p><br/>
+    <p><%= post.created_at.strftime("posted on %d/%m/%Y at %H:%M") %></p><br/>
   
-  <br>
+    <%= link_to "Edit", edit_post_path(post), class: "ui inverted yellow button"%>
+    <%= link_to "Delete", post_path(post.id), method: "delete", class: "ui inverted red button" %>
+
+  </div>
+  <br/>
 <% end %>
 
-<%= link_to new_post_path do %>
+<%= link_to new_post_path, class: "ui inverted primary button" do %>
   New post
 <% end %>

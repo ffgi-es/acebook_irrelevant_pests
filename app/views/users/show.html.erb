@@ -3,4 +3,15 @@
 <% if @current_user %>
   <%= @current_user.first_name %>!
 <% end %>
+
+<% @current_user_posts.each do |post| %>
+  <p><%= post.message %></p><br/>
+  <a href="/posts/<%= post.id %>/edit">Edit</a> 
+
+  <%= form_tag post_path(post.id), method: "delete", id: "delete" do %>
+    <%= submit_tag "Delete" %>
+  <% end %>
+  <br>
+<% end %>
+<%= link_to 'New post', "/posts/#{@current_user.id}/new" %>
 </p>
