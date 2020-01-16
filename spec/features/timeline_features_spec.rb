@@ -1,4 +1,4 @@
-RSpec.describe "small_features", type: :feature do
+RSpec.describe "Timeline Features", type: :feature do
 
   scenario "posts should be displayed in reverse chronological order" do
     visit "/posts"
