@@ -1,4 +1,10 @@
+require_relative "web_helpers.rb"
+
 RSpec.describe "Timeline Features", type: :feature do
+  
+  before do
+    sign_up
+  end
 
   scenario "posts should be displayed in reverse chronological order" do
     visit "/posts"
