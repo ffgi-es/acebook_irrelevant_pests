@@ -10,7 +10,7 @@ RSpec.describe "updating_posts", type: :feature do
 
   scenario 'User is taken to an update page' do
     click_on "Edit"
-    expect(page).to have_content("Update Post")
+    expect(page).to have_content "Update Post"
   end
 
   scenario 'should change the message' do
@@ -20,7 +20,16 @@ RSpec.describe "updating_posts", type: :feature do
 
     click_on "Submit"
 
-    expect(page).to have_content("ihatethings") 
+    expect(page).to have_content "ihatethings"
   end
 
+  scenario "a user cannot update another user's post" do
+    click_on 'Log out'
+
+    sign_up_2
+    visit '/posts'
+    click_on 'Edit'
+    
+    expect(page).to have_content "You cannot update another user's post"
+  end
 end
