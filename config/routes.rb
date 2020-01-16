@@ -7,9 +7,11 @@ Rails.application.routes.draw do
   resources :sessions
 
   post "posts/:id/edit" => "posts#update"
+  get 'posts/:id/new' => 'posts#new'
   
   post 'users/new' => 'users#create'
 
   get '/welcome' => 'sessions#index'
   post '/sessions/new' => 'sessions#create'
+  delete '/sessions/:id' => 'sessions#destroy'
 end
