@@ -32,8 +32,17 @@ RSpec.describe UsersController, type: :controller do
       expect(response).to redirect_to(new_user_path)
     end
 
-    it 'redirects bacjk to the user form if above 10 characters' do
+    it 'redirects back to the user form if above 10 characters' do
       post :create, params: { first_name: 'Jonathan', last_name: 'Alastair', email: 'jonathan@example.com', password: "12345678901" }
+      expect(response).to redirect_to(new_user_path)
+    end
+
+    it 'checks if the password equals the password confirmation' do
+      post :create, params: { first_name: 'Jonathan', 
+                              last_name: 'Alastair', 
+                              email: 'jonathan@example.com', 
+                              password: '12345678',
+                              password_confirmation: '12344678' }
       expect(response).to redirect_to(new_user_path)
     end
   end

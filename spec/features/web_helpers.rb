@@ -5,7 +5,7 @@ def sign_up
   fill_in "last_name", with: "bean"
   fill_in "email", with: "bean@gmail.com"
   fill_in "password", with: "password"
-  fill_in "confirm_password", with: "password"
+  fill_in "password_confirmation", with: "password"
 
   click_on "Submit"
 end
@@ -27,7 +27,7 @@ def sign_up_2
   fill_in "last_name", with: "F"
   fill_in "email", with: "sam@example.com"
   fill_in "password", with: "password"
-  fill_in "confirm_password", with: "password"
+  fill_in "password_confirmation", with: "password"
 
   click_on "Submit"
 end
