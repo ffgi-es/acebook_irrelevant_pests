@@ -1,5 +1,5 @@
 <%= form_for :user do |f| %>
   Email: <%= f.text_field :email, name: "email" %><br />
-  Password: <%= f.text_field :password, name: "password" %><br />
+  Password: <%= f.password_field :password, name: "password" %><br />
   <%= f.submit :'Log in', name: 'Log in' %><br />
 <% end %>
