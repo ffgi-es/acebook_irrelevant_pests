@@ -2,7 +2,7 @@ class PostsController < ApplicationController
   def new
     @post = Post.new
     session[:id] = params[:id]
-    @user_id = params[:id]
+    @user_id = session[:id]
   end
 
   def create

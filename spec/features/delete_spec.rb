@@ -1,4 +1,4 @@
-require_relative '../web_helpers'
+require_relative 'web_helpers'
 
 RSpec.describe "updating_posts", type: :feature do
   scenario 'User is taken to an update page' do

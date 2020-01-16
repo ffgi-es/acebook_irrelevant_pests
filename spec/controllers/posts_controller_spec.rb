@@ -1,5 +1,4 @@
 require 'rails_helper'
-require_relative '../web_helpers'
 
 RSpec.describe PostsController, type: :controller do
   describe "GET /new " do

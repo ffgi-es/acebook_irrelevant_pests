@@ -1,4 +1,4 @@
-require_relative '../web_helpers'
+require_relative 'web_helpers'
 
 RSpec.describe 'Logging in', type: :feature do
   scenario 'a user Logs in' do

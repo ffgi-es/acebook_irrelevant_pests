@@ -1,4 +1,4 @@
-require_relative '../web_helpers'
+require_relative 'web_helpers'
 
 RSpec.describe "only viewing user's posts", typr: :feature do
   scenario 'a user can only see their posts on their profile' do

@@ -1,5 +1,5 @@
 require 'rails_helper'
-require_relative '../web_helpers'
+require_relative 'web_helpers'
 
 RSpec.feature "Timeline", type: :feature do
   scenario "Can submit posts and view them" do
