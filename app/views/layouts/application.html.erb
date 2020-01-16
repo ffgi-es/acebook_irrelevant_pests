@@ -10,29 +10,30 @@
   </head>
 
   <body>
-    <div id="konami"></div>
-    <%= yield %>
-    <script>
+    
+    <div class="ui inverted segment">
+      <div class="ui inverted secondary pointing menu">
+        <a href="/" class="item">
+          Home
+        </a>
+        <a href="/posts" class="item">
+          Posts
+        </a>
+        <div class="right menu">
+          <a href="/sessions/new" class="item">
+            Log In
+          </a>
+          <a href="/users/new" class="item">
+            Sign Up
+          </a>
+        </div>
+      </div>
+    </div>
 
-      function onKonamiCode(assertion) {
-        var input = '';
-        var key = '38384040373937396665';
-        document.addEventListener('keydown', function (e) {
-          input += ("" + e.keyCode);
-          if (input === key) {
-            return assertion();
-          }
-          if (!key.indexOf(input)) return;
-          input = ("" + e.keyCode);
-        });
-      }
-
-      onKonamiCode(function() {
-        var element = document.getElementById("konami");
-        element.innerHTML = `<img src="https://i.imgflip.com/1jng63.jpg" class="ui fluid image">`
-        alert("FAKE NEWS!!!");
-      });
-
-    </script>
+    <div class="ui container">
+      <div id="konami"></div>
+      <%= yield %>
+    </div>
+    <script src="/app/assets/javascripts/konami.js"></script>
   </body>
 </html>
