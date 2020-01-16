@@ -1,13 +1,15 @@
 class UsersController < ApplicationController
 
-  def new
+  skip_before_action :authorised, only: [:create, :new]
 
+  def new
   end
 
   def create
     @user = User.new(user_params)
     if @user.save
       user = User.find_by({ email: params[:email] })
+      session[:id] = user.id
       redirect_to "/users/#{user.id}" if user
     else
       redirect_to '/users/new'
