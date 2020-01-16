@@ -3,7 +3,6 @@ class UsersController < ApplicationController
   skip_before_action :authorised, only: [:create, :new]
 
   def new
-    # redirect_to '/welcome' unless session[:id] || request.original_url.split(//).last(9).join == "users/new"
   end
 
   def create
