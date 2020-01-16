@@ -18,6 +18,7 @@ class UsersController < ApplicationController
 
   def show
     @current_user = User.find(params[:id])
+    @current_user_posts = Post.where({ user_id: @current_user.id })
   end
 
   private 
