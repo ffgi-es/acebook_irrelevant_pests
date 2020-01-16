@@ -1,9 +1,11 @@
 require 'rails_helper'
+require_relative '../web_helpers'
 
 RSpec.describe PostsController, type: :controller do
   describe "GET /new " do
     it "responds with 200" do
-      get :new
+      user = User.create({ first_name: 'Jonathan', last_name: 'Palma', email: 'jonathan@gmail.com', password_digest: 1234 })
+      get :new, params: { id: user.id }
       expect(response).to have_http_status(200)
     end
   end
@@ -24,7 +26,8 @@ RSpec.describe PostsController, type: :controller do
 
   describe "GET /" do
     it "responds with 200" do
-      get :index
+      user = User.create({ first_name: 'Jonathan', last_name: 'Palma', email: 'jonathan@gmail.com', password_digest: 1234 })
+      get :index, session: { id: user.id }
       expect(response).to have_http_status(200)
     end
   end

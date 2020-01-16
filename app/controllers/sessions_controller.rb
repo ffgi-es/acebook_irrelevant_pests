@@ -10,4 +10,9 @@ class SessionsController < ApplicationController
     session[:id] = current_user.id
     redirect_to "/users/#{current_user.id}"
   end
+
+  def destroy
+    session.clear
+    redirect_to '/welcome'
+  end
 end

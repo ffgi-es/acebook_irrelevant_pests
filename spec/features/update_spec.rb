@@ -1,6 +1,9 @@
+require_relative '../web_helpers'
+
 RSpec.describe "updating_posts", type: :feature do
 		scenario 'User is taken to an update page' do
-				visit '/posts/new'
+				sign_up
+				click_on 'New post'
 				fill_in "post_message", with: "ilikethings"
 				click_button "Submit" 
 
@@ -9,7 +12,8 @@ RSpec.describe "updating_posts", type: :feature do
 		end
 
 		scenario 'should change the message' do
-				visit '/posts/new'
+				sign_up
+				click_on 'New post'
 				fill_in "post_message", with: "ilikethings" 
 				click_button "Submit" 
 
