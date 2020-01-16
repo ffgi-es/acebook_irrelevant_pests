@@ -2,17 +2,15 @@
 
 <% @posts.reverse.each do |post| %>
   <div>
-
+    <% if @edit_error && @edit_error_id.to_i == post.id %>
+      <p style='color: red;'>You cannot update another user's post</p>
+    <% end %>
     <p><%= post.message %></p><br/>
     <p><%= post.created_at.strftime("posted on %d/%m/%Y at %H:%M") %></p><br/>
-  
-    <%= link_to "Edit", edit_post_path(post), class: "ui inverted yellow button"%>
+    <%= link_to "Edit", edit_post_path(post.id), class: "ui inverted yellow button"%>
     <%= link_to "Delete", post_path(post.id), method: "delete", class: "ui inverted red button" %>
-
   </div>
   <br/>
 <% end %>
 
-<%= link_to new_post_path, class: "ui inverted primary button" do %>
-  New post
-<% end %>
+<%= link_to 'New post', "/posts/#{@user.id}/new", class: "ui inverted primary button" %>
