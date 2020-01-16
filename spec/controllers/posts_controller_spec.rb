@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe PostsController, type: :controller do
   describe "GET /new " do
     it "responds with 200" do
-      user = User.create({ first_name: 'Jonathan', last_name: 'Palma', email: 'jonathan@gmail.com', password_digest: 1234 })
+      user = User.create({ first_name: 'Jonathan', last_name: 'Palma', email: 'jonathan@gmail.com', password: "123456" })
       get :new, params: { id: user.id }, session: { id: user.id }
       expect(response).to have_http_status(200)
     end
@@ -23,7 +23,7 @@ RSpec.describe PostsController, type: :controller do
 
   describe "GET /" do
     it "responds with 200" do
-      user = User.create({ first_name: 'Jonathan', last_name: 'Palma', email: 'jonathan@gmail.com', password_digest: 1234 })
+      user = User.create({ first_name: 'Jonathan', last_name: 'Palma', email: 'jonathan@gmail.com', password: "123456" })
       get :index, session: { id: user.id }
       expect(response).to have_http_status(200)
     end
