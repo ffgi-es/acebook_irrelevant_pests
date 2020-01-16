@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   resources :users
   resources :sessions
 
-  post "posts/:id/edit" => "posts#update"
+  # post "posts/:id/edit" => "posts#update"
   
   post 'users/new' => 'users#create'
 

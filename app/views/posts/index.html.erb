@@ -1,13 +1,12 @@
 <% @posts.reverse.each do |post| %>
   <div>
+
     <p><%= post.message %></p><br/>
     <p><%= post.created_at.strftime("posted on %d/%m/%Y at %H:%M") %></p><br/>
   
-    <a href="/posts/<%= post.id %>/edit" class="ui inverted yellow button">Edit</a> 
+    <%= link_to "Edit", edit_post_path(post), class: "ui inverted yellow button"%>
+    <%= link_to "Delete", post_path(post.id), method: "delete", class: "ui inverted red button" %>
 
-    <%= form_tag post_path(post.id), method: "delete" do %>
-      <%= submit_tag "Delete", class: "ui inverted red button" %>
-    <% end %>
   </div>
   <br/>
 <% end %>
