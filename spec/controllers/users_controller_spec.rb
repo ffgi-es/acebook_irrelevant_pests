@@ -18,4 +18,11 @@ RSpec.describe UsersController, type: :controller do
       expect(User.find_by({ email: 'jonathan@example.com' })).not_to be
     end
   end
+
+  describe "email validation" do
+    it 'redirects back to new user form' do
+      post :create, params: { first_name: 'Jonathan', last_name: 'Alastair', email: 'jon..al@example.com', password: 1234 }
+      expect(response).to redirect_to(new_user_path)
+    end
+  end
 end
