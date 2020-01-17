@@ -7,7 +7,7 @@ RSpec.describe 'updating_posts', type: :feature do
     fill_in 'post_message', with: 'ilikethings' 
     click_button 'Submit' 
   end
-
+  
   scenario 'User is taken to an update page' do
     click_on 'Delete' 
     
