@@ -3,10 +3,11 @@ require_relative 'web_helpers'
 RSpec.describe 'Logging in', type: :feature do
   before do
     sign_up
+    click_on 'Log out'
   end
 
   scenario 'a user Logs in' do
-    visit '/welcome'
+    visit '/'
     click_on 'Log in'
     fill_in 'email', with: "bean@gmail.com"
     fill_in 'password', with: 'password'
