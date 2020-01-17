@@ -7,7 +7,6 @@ RSpec.feature "Timeline", type: :feature do
   end
   
   scenario "Can submit posts and view them" do
-    sign_up
     click_on 'New post'
     fill_in "Message", with: "Hello, world!"
     click_button "Submit"

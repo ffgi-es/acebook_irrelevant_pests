@@ -1,5 +1,5 @@
 def sign_up
-  visit "/welcome"
+  visit root_path
   click_on "Sign up"
   fill_in "first_name", with: "heen"
   fill_in "last_name", with: "bean"
@@ -11,9 +11,7 @@ def sign_up
 end
 
 def log_in
-  sign_up
-
-  visit '/welcome'
+  visit root_path
   click_on 'Log in'
   fill_in 'email', with: "bean@gmail.com"
   fill_in 'password', with: 'password'
@@ -21,7 +19,7 @@ def log_in
 end
 
 def sign_up_2
-  visit "/welcome"
+  visit root_path
   click_on "Sign up"
   fill_in "first_name", with: "Sam"
   fill_in "last_name", with: "F"
@@ -33,9 +31,7 @@ def sign_up_2
 end
 
 def log_in_2
-  sign_up
-
-  visit '/welcome'
+  visit root_path
   click_on 'Log in'
   fill_in 'email', with: "sam@example.com"
   fill_in 'password', with: 'password'
