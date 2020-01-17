@@ -2,7 +2,7 @@
 
 <%= form_for @post do |form| %>
   <%= form.label :message %>
-  <%= form.text_field :message, name: "post_message" %>
+  <%= form.text_area :message, name: "post_message" %>
 
   <%= form.submit "Submit" %>
 <% end %>

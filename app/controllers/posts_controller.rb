@@ -44,7 +44,9 @@ class PostsController < ApplicationController
 
   def index
     @user = User.find(session[:id])
-    @posts = Post.all
+    @posts = Post.all.sort_by(&:created_at)
+    @edit_error = session[:invalid_edit]
+    @edit_error_id = session[:invalid_edit_id]
   end
 
   private
@@ -62,6 +64,7 @@ class PostsController < ApplicationController
   def reset_edit_error
     session[:invalid_edit] = nil
     session[:invalid_edit_id] = nil
+
   end
 
   def reset_delete_error
