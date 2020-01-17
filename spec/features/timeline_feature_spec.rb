@@ -14,7 +14,7 @@ RSpec.describe "timeline_features", type: :feature do
     fill_in "Message", with: "Hello!"
     click_button "Submit"
 
-    time = Time.now.strftime("%d/%m/%Y at %H:%M")
+    time = Time.now.utc.strftime("%d/%m/%Y at %H:%M")
 
     click_on "New post"
     fill_in "Message", with: "Goodbye!"
@@ -30,7 +30,7 @@ RSpec.describe "timeline_features", type: :feature do
     fill_in "Message", with: "Hello!"
     click_button "Submit"
 
-    time = Time.now.strftime("%d/%m/%Y at %H:%M")
+    time = Time.now.utc.strftime("%d/%m/%Y at %H:%M")
 
     click_on "New post"
     fill_in "Message", with: "Goodbye!"
