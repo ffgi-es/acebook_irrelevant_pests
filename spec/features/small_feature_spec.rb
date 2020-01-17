@@ -1,32 +1,38 @@
+require_relative 'web_helpers'
+
 RSpec.describe "small_features", type: :feature do
 
-  scenario "posts should be displayed in reverse chronological order" do
-    visit "/posts"
+  before do
 
-    click_link "New post"
+    sign_up
+
+  end
+
+  scenario "posts should be displayed in reverse chronological order" do
+
+    click_on "New post"
     fill_in "Message", with: "Hello!"
     click_button "Submit"
 
     time = Time.now.strftime("%d/%m/%Y at %H:%M")
 
-    click_link "New post"
+    click_on "New post"
     fill_in "Message", with: "Goodbye!"
     click_button "Submit"
 
-    expect(page).to have_content("Goodbye! posted on #{time} Edit Hello!")
-    
+    expect(page).to have_content("Goodbye! posted on #{time} Edit Delete Hello!")
+
   end
 
   scenario "posts should be displayed in reverse chronological order after being edited" do
-    visit "/posts"
 
-    click_link "New post"
+    click_on "New post"
     fill_in "Message", with: "Hello!"
     click_button "Submit"
 
     time = Time.now.strftime("%d/%m/%Y at %H:%M")
 
-    click_link "New post"
+    click_on "New post"
     fill_in "Message", with: "Goodbye!"
     click_button "Submit"
 
@@ -35,16 +41,15 @@ RSpec.describe "small_features", type: :feature do
     fill_in "Message", with: "Hello, World!"
     click_button "Submit"
 
-    expect(page).to have_content("Goodbye! posted on #{time} Edit Hello, World!")
+    expect(page).to have_content("Goodbye! posted on #{time} Edit Delete Hello, World!")
     
   end
 
   scenario "posts should be displayed with line breaks if they have line breaks" do
-    visit "/posts"
 
-    click_link "New post"
+    click_on "New post"
     fill_in "Message", with: "First Line\nSecond Line"
-    click_button "Submit"
+    click_on "Submit"
 
     expect(page).to have_content("First Line Second Line")
     
