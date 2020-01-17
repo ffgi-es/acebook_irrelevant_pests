@@ -5,8 +5,8 @@ RSpec.describe "signing up", type: :feature do
     fill_in "first_name", with: "heen"
     fill_in "last_name", with: "bean"
     fill_in "email", with: "bean@gmail.com"
-    fill_in "password", with: "1234password"
-    fill_in "confirm_password", with: "1234password"
+    fill_in "password", with: "password"
+    fill_in "password_confirmation", with: "password"
 
     click_on "Submit"
 
