@@ -1,11 +1,15 @@
-def sign_up
+def sign_up(first_name: 'heen', 
+            last_name: 'bean',
+            email: 'bean@gmail.com',
+            password: 'password',
+            password_confirmation: 'password')
   visit root_path
   click_on "Sign up"
-  fill_in "first_name", with: "heen"
-  fill_in "last_name", with: "bean"
-  fill_in "email", with: "bean@gmail.com"
-  fill_in "password", with: "password"
-  fill_in "password_confirmation", with: "password"
+  fill_in "first_name", with: first_name
+  fill_in "last_name", with: last_name
+  fill_in "email", with: email
+  fill_in "password", with: password
+  fill_in "password_confirmation", with: password_confirmation
 
   click_on "Submit"
 end
