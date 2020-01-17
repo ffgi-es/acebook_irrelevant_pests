@@ -17,6 +17,7 @@ class PostsController < ApplicationController
 
   def edit
     @post = Post.find(params[:id])
+    reset_errors
     handle_errors(@post)
   end
 
@@ -27,11 +28,12 @@ class PostsController < ApplicationController
 
   def destroy
     post = Post.find(params[:id])
+    reset_errors
     if session[:id].to_i != post.user_id
       delete_error(post)
     else
       Post.delete(params[:id])
-      reset_delete_error
+      reset_errors
     end
     redirect_to "/"
   end
@@ -86,15 +88,19 @@ class PostsController < ApplicationController
     redirect_to '/posts'   
   end
 
+  def reset_errors
+    reset_edit_error
+    reset_time_out_error
+    reset_delete_error
+  end
+
   def handle_errors(post)
     if session[:id].to_i != post.user_id 
       handle_edit_error(post)
     elsif Time.now.utc - post.created_at >= 600
       handle_time_out_error(post)
     else  
-      reset_edit_error
-      reset_time_out_error
+      reset_errors
     end
   end
-
 end
