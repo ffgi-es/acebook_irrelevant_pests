@@ -3,14 +3,11 @@ require_relative 'web_helpers'
 RSpec.describe 'updating_posts', type: :feature do
   before do
     sign_up
-  end
-  
-  scenario 'User is taken to an update page' do
     click_on 'New post'
     fill_in 'post_message', with: 'ilikethings' 
     click_button 'Submit' 
   end
-
+  
   scenario 'User is taken to an update page' do
     click_on 'Delete' 
     
