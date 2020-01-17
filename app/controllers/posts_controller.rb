@@ -1,18 +1,28 @@
 class PostsController < ApplicationController
-  
   def new
-    # p "New: #{params}"
     @post = Post.new
+    session[:id] = params[:id]
+    @user_id = session[:id]
   end
 
   def create
-    # p "Create: #{params}"
+    post_params = {
+      message: params[:post][:message],
+      user_id: params[:post][:user_id],
+    }
+
     @post = Post.create(post_params)
     redirect_to posts_url
   end
 
   def edit
     @post = Post.find(params[:id])
+    if session[:id].to_i != @post.user_id
+      edit_error(@post)
+      redirect_to '/posts'
+    else
+      reset_edit_error
+    end
   end
 
   def update
@@ -26,15 +36,21 @@ class PostsController < ApplicationController
   end
 
   def index
+    @user = User.find(session[:id])
     @posts = Post.all
-    # p "Index: #{params}"
+    @edit_error = session[:invalid_edit]
+    @edit_error_id = session[:invalid_edit_id]
   end
 
   private
 
-  def post_params
-    # p "Post params #{params}"
-    params.require(:post).permit(:message)
+  def edit_error(post)
+    session[:invalid_edit] = true
+    session[:invalid_edit_id] = post.id.to_s
   end
 
+  def reset_edit_error
+    session[:invalid_edit] = nil
+    session[:invalid_edit_id] = nil
+  end
 end
