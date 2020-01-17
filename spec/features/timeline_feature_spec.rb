@@ -1,6 +1,6 @@
 require_relative 'web_helpers'
 
-RSpec.describe "small_features", type: :feature do
+RSpec.describe "timeline_features", type: :feature do
 
   before do
 
