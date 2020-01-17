@@ -10,11 +10,16 @@
     <% if session[:invalid_delete] && session[:invalid_delete_id].to_i == post.id %>
       <p style='color: red;'>You cannot delete another user's post</p>
     <% end %>
-    
+
+     <% if session[:over_ten_minutes] && session[:over_ten_minutes_id].to_i == post.id %>
+      <p style='color: red;'>Post can no longer be edited.</p>
+    <% end %>
+
     <p style="white-space: pre-line"><%= post.message %></p><br/>
     <p><%= post.created_at.strftime("posted on %d/%m/%Y at %H:%M") %></p><br/>
     <%= link_to "Edit", edit_post_path(post.id), class: "ui inverted secondary button"%>
     <%= link_to "Delete", post_path(post.id), method: "delete", class: "ui inverted red button" %>
+    
   </div>
   <br/>
 <% end %>
