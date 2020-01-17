@@ -31,13 +31,20 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    Post.delete(params[:id])
+    post = Post.find(params[:id])
+    if session[:id].to_i != post.user_id
+      delete_error(post)
+    else
+      Post.delete(params[:id])
+      reset_delete_error
+    end
+    
     redirect_to "/"
   end
 
   def index
     @user = User.find(session[:id])
-    @posts = Post.all
+    @posts = Post.all.sort_by(&:created_at)
     @edit_error = session[:invalid_edit]
     @edit_error_id = session[:invalid_edit_id]
   end
@@ -49,8 +56,19 @@ class PostsController < ApplicationController
     session[:invalid_edit_id] = post.id.to_s
   end
 
+  def delete_error(post)
+    session[:invalid_delete] = true
+    session[:invalid_delete_id] = post.id.to_s
+  end
+
   def reset_edit_error
     session[:invalid_edit] = nil
     session[:invalid_edit_id] = nil
+
+  end
+
+  def reset_delete_error
+    session[:invalid_delete] = nil
+    session[:invalid_delete_id] = nil
   end
 end

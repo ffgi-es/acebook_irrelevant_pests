@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-
   skip_before_action :authorised, only: [:create, :new]
 
   def new
@@ -25,14 +24,5 @@ class UsersController < ApplicationController
 
   def user_params
     params.permit(:first_name, :last_name, :email, :password, :password_confirmation)
-    # p "------> #{params}"
-
-    # p user = {
-    #   first_name: params[:first_name],
-    #   last_name: params[:last_name],
-    #   email: params[:email],
-    #   password_digest: BCrypt::Password.create(params[:password_digest])
-    # }
   end
-
 end
