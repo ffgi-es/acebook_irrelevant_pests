@@ -17,16 +17,7 @@ class PostsController < ApplicationController
 
   def edit
     @post = Post.find(params[:id])
-    if session[:id].to_i != @post.user_id 
-      edit_error(@post)
-      redirect_to '/posts'
-    elsif Time.now.utc - @post.created_at >= 600
-      time_out_error(@post)
-      redirect_to '/posts'   
-    else  
-     reset_edit_error
-     reset_time_out_error
-    end
+    handle_errors(@post)
   end
 
   def update
@@ -42,7 +33,6 @@ class PostsController < ApplicationController
       Post.delete(params[:id])
       reset_delete_error
     end
-    
     redirect_to "/"
   end
 
@@ -84,6 +74,27 @@ class PostsController < ApplicationController
   def reset_time_out_error
     session[:over_ten_minutes] = nil
     session[:over_ten_minutes_id] = nil
+  end
+
+  def handle_edit_error(post)
+    edit_error(post)
+    redirect_to '/posts'
+  end
+
+  def handle_time_out_error(post)
+    time_out_error(post)
+    redirect_to '/posts'   
+  end
+
+  def handle_errors(post)
+    if session[:id].to_i != post.user_id 
+      handle_edit_error(post)
+    elsif Time.now.utc - post.created_at >= 600
+      handle_time_out_error(post)
+    else  
+      reset_edit_error
+      reset_time_out_error
+    end
   end
 
 end

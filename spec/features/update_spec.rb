@@ -42,7 +42,7 @@ RSpec.describe "updating_posts", type: :feature do
   end
 
   scenario 'a user can update a post before ten minutes' do
-      click_on 'Edit'
-      expect(page).not_to have_content "Post can no longer be edited."
+    click_on 'Edit'
+    expect(page).not_to have_content "Post can no longer be edited."
   end
 end
