@@ -5,7 +5,6 @@ RSpec.describe "updating_posts", type: :feature do
     sign_up
   end
   scenario 'User is taken to an update page' do
-    sign_up
     click_on 'New post'
     fill_in "post_message", with: "ilikethings"
     click_button "Submit" 

@@ -4,6 +4,6 @@ class ApplicationController < ActionController::Base
   before_action :authorised
   
   def authorised
-    redirect_to welcome_path unless session[:id]
+    redirect_to root_path unless session[:id]
   end
 end
