@@ -37,7 +37,7 @@ class PostsController < ApplicationController
 
   def index
     @user = User.find(session[:id])
-    @posts = Post.all.sort_by &:created_at
+    @posts = Post.all.sort_by(&:created_at)
     @edit_error = session[:invalid_edit]
     @edit_error_id = session[:invalid_edit_id]
   end
