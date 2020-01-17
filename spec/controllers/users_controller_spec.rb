@@ -26,6 +26,18 @@ RSpec.describe UsersController, type: :controller do
     end
   end
 
+  describe 'no repeat sign up' do
+    it 'redirects back to new user form' do
+      user = User.create(first_name: 'Jonathan', 
+                         last_name: 'Alastair', 
+                         email: 'jonathan@example.com', 
+                         password: "1234567")
+      post :create, params: { first_name: 'Jon', last_name: 'Al', email: user.email, password: "123456789" }
+      result = User.where email: user.email
+      expect(result.length).to eq 1
+    end
+  end
+
   describe "password validation" do
     it 'redirects back to new user form if below 6 characters' do
       post :create, params: { first_name: 'Jonathan', last_name: 'Alastair', email: 'jonathan@example.com', password: "1234" }
