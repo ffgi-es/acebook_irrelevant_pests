@@ -4,40 +4,53 @@
     <title>Acebook</title>
     <%= csrf_meta_tags %>
 
+    <%= stylesheet_link_tag    'https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css' %>
     <%= stylesheet_link_tag    'application', media: 'all' %>
-    <%= stylesheet_link_tag "https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css" %>
     <%= javascript_include_tag 'application' %>
   </head>
 
   <body>
     
-    <div class="ui inverted segment">
-      <div class="ui inverted secondary pointing menu">
-        <a href="/" class="item">
-          Home
-        </a>
-        <a href="/posts" class="item">
-          Posts
-        </a>
-        <div class="right menu">
-          <a href="/sessions/new" class="item">
-            Log In
+    <div class="ui fixed inverted menu">
+      <div class="ui container">
+        <div class="ui inverted secondary pointing menu">
+          <a href="/" class="item">
+            <img class="logo" src="/app/assets/images/acebookofspades.jpg">
+            <p>Acebook</p>
           </a>
-          <a href="/users/new" class="item">
-            Sign Up
+          <a href="/posts" class="item">
+            Posts
           </a>
+          <div class="right menu">
+            <a href="/sessions/new" class="item">
+              Log In
+            </a>
+            <a href="/users/new" class="item">
+              Sign Up
+            </a>
+          </div>
         </div>
       </div>
     </div>
 
+
+    <!-- <div class="ui vertical inverted left visible sidebar menu"> 
+      <a class="item">
+        <i class="home icon"></i>
+        Home
+      </a>
+      <a class="item">
+        <i class="block layout icon"></i>
+        Topics
+      </a>
+  </div> -->
+  <div class="main">
     <div class="ui container">
 
       <div id="konami"></div>
       <%= yield %>
       
     </div>
-
-    <script src="/app/assets/javascripts/konami.js"></script>
-
+  </div>
   </body>
 </html>

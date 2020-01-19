@@ -1,0 +1,17 @@
+p {
+  font-size: 1.5em;
+  white-space: pre-line;
+}
+
+div.container.post {
+  margin: 2.5em;
+  text-align: center;
+}
+
+div.ui.fixed.inverted.menu {
+  padding: 1em;
+}
+
+body {
+  margin-top: 6em;
+}
