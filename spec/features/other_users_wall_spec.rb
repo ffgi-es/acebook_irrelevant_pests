@@ -12,6 +12,10 @@ describe 'viewing_other_users_walls', type: :feature do
     expect(page).to have_content "heen's wall"
     expect(page).to have_content "First post"
     click_on 'Profile'
+    click_on 'New post'
+    fill_in 'Message', with: 'Second post'
+    click_on 'Submit'
+    click_on 'Profile'
     expect(page).to have_content "Welcome Sam!"
     expect(page).not_to have_content "First post"
   end
