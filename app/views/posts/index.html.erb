@@ -1,7 +1,9 @@
 <%= link_to 'Log out', "/sessions/#{@user.id}", method: :delete, class: "ui inverted secondary button" %>
 <%= link_to 'New post', new_post_path, class: "ui inverted secondary button" %>
+<%= link_to 'Profile', "/users/#{session[:id]}", class: "ui inverted secondary button" %>
 
 <% @posts.reverse.each do |post| %>
+<% @post_owner = User.find(post.user_id) %>
   <div>
     <% if session[:invalid_edit] && session[:invalid_edit_id].to_i == post.id %>
       <p style='color: red;'>You cannot update another user's post</p>
@@ -16,10 +18,11 @@
     <% end %>
 
     <p style="white-space: pre-line"><%= post.message %></p><br/>
-    <p><%= post.created_at.strftime("Posted by #{@user.first_name} #{@user.last_name} on %d/%m/%Y at %H:%M") %></p><br/>
+    <p><%= "Posted by" %> <%= link_to "#{@post_owner.first_name} #{@post_owner.last_name}","/users/#{@post_owner.id}" %> <%=post.created_at.strftime("on %d/%m/%Y at %H:%M") %></p><br/>
     <%= link_to "Edit", edit_post_path(post.id), class: "ui inverted secondary button"%>
     <%= link_to "Delete", post_path(post.id), method: "delete", class: "ui inverted red button" %>
     
   </div>
   <br/>
 <% end %>
+
