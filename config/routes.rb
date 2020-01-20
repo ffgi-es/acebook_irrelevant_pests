@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   resources :photos
 
   post "posts/:id/edit" => "posts#update"
-  get 'posts/:id/new' => 'posts#new'
+  get 'posts/:wall_id/new' => 'posts#new'
   
   post 'users/new' => 'users#create'
 

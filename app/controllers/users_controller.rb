@@ -19,8 +19,11 @@ class UsersController < ApplicationController
 
   def show
     @current_user = User.find(params[:id])
-    @current_user_posts = Post.where({ user_id: @current_user.id })
+    @current_user_posts = Post.where(user_id: @current_user.id, wall_user_id: nil)
+      .or(Post.where(wall_user_id: @current_user.id))
     @other_user = params[:id].to_i != session[:id]
+  rescue ActiveRecord::RecordNotFound
+    render '404'
   end
 
   private 
