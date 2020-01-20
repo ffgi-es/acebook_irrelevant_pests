@@ -17,27 +17,25 @@
           <%= image_tag "acebook_logo.png", class: "logo" %>
           <span>Acebook</span>
         </a>
-        <% if @current_user %>
-        <a href="/posts" class="item">
-          Posts
-        </a>
-        <a href="/posts/new" class="item">
-          New Post
-        </a>
+        <% if current_user %>
+          <a href="/posts" class="item">
+            Posts
+          </a>
+          <%= link_to 'New post', new_post_path, class: "item" %>
         <% end %>
         <div class="right item">
-          <% if !@current_user %>
-          <a href="/sessions/new" class="item">
-            Log In
-          </a>
-          <a href="/users/new" class="item">
-            Sign Up
-          </a>
-          <% else %>
-          <a href="/users/<%= @current_user.id %>" class="item">
-            Welcome <%= @current_user.first_name.capitalize  %>
-          </a>
-          <%= link_to 'Log out', "/sessions/null", method: :delete, class: "item" %>
+          <% if !current_user %>
+            <a href="/sessions/new" class="item">
+              Log in
+            </a>
+            <a href="/users/new" class="item">
+              Sign up
+            </a>
+          <% elsif current_user %>
+            <a href="/users/<%= current_user.id %>" class="item">
+              Welcome <%= current_user.first_name.capitalize  %>
+            </a>
+            <%= link_to 'Log out', "/sessions/null", method: :delete, class: "item" %>
           <% end %>
         </div>
       </div>

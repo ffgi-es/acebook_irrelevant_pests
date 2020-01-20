@@ -32,4 +32,17 @@ RSpec.describe "updating_posts", type: :feature do
     
     expect(page).to have_content "You cannot update another user's post"
   end
+
+  scenario 'a user cannot update a post after ten minutes' do
+    Timecop.freeze(Time.now.utc + 600) do
+      click_on 'Edit'
+
+      expect(page).to have_content "Post can no longer be edited."
+    end
+  end
+
+  scenario 'a user can update a post before ten minutes' do
+    click_on 'Edit'
+    expect(page).not_to have_content "Post can no longer be edited."
+  end
 end

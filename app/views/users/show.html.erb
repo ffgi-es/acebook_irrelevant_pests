@@ -1,9 +1,29 @@
-<% @current_user_posts.each do |post| %>
-  <p><%= post.message %></p><br/>
-      <p><%= post.created_at.strftime("posted on %d/%m/%Y at %H:%M") %></p><br/>
+<!-- <%= link_to 'Log out', "/sessions/#{@current_user.id}", method: :delete, class: "ui inverted secondary button" %> -->
+<!-- <%= link_to 'New post', "/posts/#{@current_user.id}/new",  class: "ui inverted secondary button" %> -->
+<% if @other_user %> 
+  <%= link_to 'Profile', "/users/#{session[:id]}", class: "ui inverted secondary button" %>
+  <p><%= @current_user.first_name %>'s wall</p>
+<% else  %>
+  <p>Welcome <%= @current_user.first_name %>!</p>
+<% end %>
 
-    <%= link_to "Edit", edit_post_path(post), class: "ui inverted secondary button"%>
-    <%= link_to "Delete", post_path(post.id), method: "delete", class: "ui inverted red button" %>
+<% @current_user_posts.each do |post| %>
+  <% if session[:invalid_edit] && session[:invalid_edit_id].to_i == post.id %>
+    <p style='color: red;'>You cannot update another user's post</p>
+  <% end %>
+  
+  <% if session[:invalid_delete] && session[:invalid_delete_id].to_i == post.id %>
+    <p style='color: red;'>You cannot delete another user's post</p>
+  <% end %>
+
+  <% if session[:over_ten_minutes] && session[:over_ten_minutes_id].to_i == post.id %>
+    <p style='color: red;'>Post can no longer be edited.</p>
+  <% end %>
+  <p><%= post.message %></p><br/>
+  <p><%= post.created_at.strftime("posted on %d/%m/%Y at %H:%M") %></p><br/>
+
+  <%= link_to "Edit", edit_post_path(post), class: "ui inverted secondary button"%>
+  <%= link_to "Delete", post_path(post.id), method: "delete", class: "ui inverted red button" %>
 
   <br>
 <% end %>

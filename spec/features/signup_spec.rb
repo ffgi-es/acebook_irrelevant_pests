@@ -1,6 +1,6 @@
 RSpec.describe "signing up", type: :feature do
   scenario "a user can sign up" do 
-    visit "/welcome"
+    visit root_path
     click_on "Sign up"
     fill_in "first_name", with: "heen"
     fill_in "last_name", with: "bean"

@@ -2,7 +2,11 @@ class SessionsController < ApplicationController
   skip_before_action :authorised
 
   def index
-    session.clear
+    if session[:id]
+      redirect_to posts_path
+    else
+      session.clear
+    end
   end
 
   def new
@@ -20,6 +24,6 @@ class SessionsController < ApplicationController
 
   def destroy
     session.clear
-    redirect_to '/welcome'
+    redirect_to root_path
   end
 end

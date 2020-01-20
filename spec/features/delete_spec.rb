@@ -7,20 +7,34 @@ RSpec.describe 'updating_posts', type: :feature do
     fill_in 'post_message', with: 'ilikethings' 
     click_button 'Submit' 
   end
-
+  
   scenario 'User is taken to an update page' do
     click_on 'Delete' 
     
     expect(page).not_to have_content('ilikethings')
   end
 
-  scenario "a user cannot delete another user's post" do
-    click_on 'Log out'
+  describe "A user cannot delete another user's post" do
+    scenario "from the homepage" do
+      click_on 'Log out'
 
-    sign_up_2
-    visit '/posts'
-    click_on 'Delete'
-    expect(page).to have_content 'ilikethings'
-    expect(page).to have_content "You cannot delete another user's post"
+      sign_up_2
+      visit '/posts'
+      click_on 'Delete'
+      expect(page).to have_content 'ilikethings'
+      expect(page).to have_content "You cannot delete another user's post"
+    end
+
+    scenario "from another user's wall" do
+      click_on 'Log out'
+
+      sign_up_2
+      visit '/posts'
+      click_on 'heen bean'
+      click_on 'Delete'
+      expect(page).to have_content 'ilikethings'
+      expect(page).to have_content "You cannot delete another user's post"
+    end
   end
+
 end
