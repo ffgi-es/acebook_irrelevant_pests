@@ -17,12 +17,9 @@
           <%= image_tag "acebook_logo.png", class: "logo" %>
           <span>Acebook</span>
         </a>
-        <% if current_user %>
-          <a href="/posts" class="item">
-            Posts
-          </a>
+        <!-- <% if current_user %>
           <%= link_to 'New post', new_post_path, class: "item" %>
-        <% end %>
+        <% end %> -->
         <div class="right item">
           <% if !current_user %>
             <a href="/sessions/new" class="item">
