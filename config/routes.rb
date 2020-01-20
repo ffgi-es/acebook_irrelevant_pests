@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   resources :sessions
 
   post "posts/:id/edit" => "posts#update"
-  get 'posts/:id/new' => 'posts#new'
+  get 'posts/:wall_id/new' => 'posts#new'
   
   post 'users/new' => 'users#create'
 

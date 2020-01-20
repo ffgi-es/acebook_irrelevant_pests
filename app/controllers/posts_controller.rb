@@ -1,16 +1,19 @@
 class PostsController < ApplicationController
   def new
     @post = Post.new
+    @wall_user_id = params[:wall_id]
+    session[:return_to] ||= request.referer
   end
 
   def create
     post_params = {
       message: params[:post][:message],
-      user_id: session[:id]
+      user_id: session[:id],
+      wall_user_id: params[:post][:wall_user_id]
     }
 
     @post = Post.create(post_params)
-    redirect_to posts_path
+    redirect_to session.delete(:return_to)
   end
 
   def edit
@@ -21,7 +24,7 @@ class PostsController < ApplicationController
 
   def update
     Post.update(params[:id], :message => params[:post_message])
-    redirect_to "/posts"
+    redirect_to posts_path
   end
 
   def destroy
@@ -33,7 +36,7 @@ class PostsController < ApplicationController
 
   def index
     @user = User.find(session[:id])
-    @posts = Post.all.sort_by(&:created_at)
+    @posts = Post.where(wall_user_id: nil).sort_by(&:created_at)
     @edit_error = session[:invalid_edit]
     @edit_error_id = session[:invalid_edit_id]
   end
