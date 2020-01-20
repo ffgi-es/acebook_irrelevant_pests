@@ -17,5 +17,9 @@ describe 'Posting to another users wall', type: :feature do
     visit posts_path
 
     expect(page).not_to have_content 'Hello!'
+
+    click_on 'Profile'
+
+    expect(page).not_to have_content 'Hello!'
   end
 end
