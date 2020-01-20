@@ -16,6 +16,7 @@ RSpec.describe "timeline_features", type: :feature do
     click_on "New post"
     fill_in "Message", with: "Goodbye!"
     click_button "Submit"
+    visit posts_path
 
     expect(page).to have_content("Goodbye! Posted by heen bean on #{time} Edit Delete Hello!")
   end
@@ -30,11 +31,13 @@ RSpec.describe "timeline_features", type: :feature do
     click_on "New post"
     fill_in "Message", with: "Goodbye!"
     click_button "Submit"
+    visit posts_path
 
     all('a', :text => 'Edit')[1].click
 
     fill_in "Message", with: "Hello, World!"
     click_button "Submit"
+    visit posts_path 
 
     expect(page).to have_content("Goodbye! Posted by heen bean on #{time} Edit Delete Hello, World!")
   end
