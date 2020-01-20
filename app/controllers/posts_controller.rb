@@ -1,18 +1,16 @@
 class PostsController < ApplicationController
   def new
     @post = Post.new
-    session[:id] = params[:id]
-    @user_id = session[:id]
   end
 
   def create
     post_params = {
       message: params[:post][:message],
-      user_id: params[:post][:user_id],
+      user_id: session[:id]
     }
 
     @post = Post.create(post_params)
-    redirect_to posts_url
+    redirect_to posts_path
   end
 
   def edit
