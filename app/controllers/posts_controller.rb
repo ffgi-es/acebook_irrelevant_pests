@@ -27,13 +27,8 @@ class PostsController < ApplicationController
   def destroy
     post = Post.find(params[:id])
     reset_errors
-    if session[:id].to_i != post.user_id
-      delete_error(post)
-    else
-      Post.delete(params[:id])
-      reset_errors
-    end
-    redirect_to "/"
+    handle_delete(post)
+    redirect_back(fallback_location: root_path)
   end
 
   def index
@@ -48,6 +43,15 @@ class PostsController < ApplicationController
   def edit_error(post)
     session[:invalid_edit] = true
     session[:invalid_edit_id] = post.id.to_s
+  end
+
+  def handle_delete(post)
+    if session[:id].to_i != post.user_id
+      delete_error(post)
+    else
+      Post.delete(params[:id])
+      reset_errors
+    end
   end
 
   def delete_error(post)
