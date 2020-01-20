@@ -1,17 +1,35 @@
+html, body {
+  margin: 0;
+  height: 100%;
+}
+
 p {
   font-size: 1.5em;
   white-space: pre-line;
 }
 
+body {
+  margin-top: 8em;
+}
+
+span {
+  margin-left: 1em;
+}
+
+.wrapper {
+  box-sizing: border-box;
+  position: relative;
+  padding-bottom: 1em; /* Height of footer */
+  min-height: 100%;
+}
+
+.ui.inverted.vertical.footer.segment {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
 div.container.post {
   margin: 2.5em;
   text-align: center;
-}
-
-div.ui.fixed.inverted.menu {
-  padding: 1em;
-}
-
-body {
-  margin-top: 6em;
 }

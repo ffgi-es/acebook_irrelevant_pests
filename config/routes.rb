@@ -13,5 +13,5 @@ Rails.application.routes.draw do
 
   get '/welcome' => 'sessions#index'
   post '/sessions/new' => 'sessions#create'
-  delete '/sessions/:id' => 'sessions#destroy'
+  # delete '/sessions/:id' => 'sessions#destroy'
 end

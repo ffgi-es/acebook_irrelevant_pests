@@ -10,47 +10,96 @@
   </head>
 
   <body>
-    
+  <div class="wrapper">
     <div class="ui fixed inverted menu">
       <div class="ui container">
-        <div class="ui inverted secondary pointing menu">
-          <a href="/" class="item">
-            <img class="logo" src="/app/assets/images/acebookofspades.jpg">
-            <p>Acebook</p>
+        <a href="/" class="item">
+          <%= image_tag "acebook_logo.png", class: "logo" %>
+          <span>Acebook</span>
+        </a>
+        <% if @current_user %>
+        <a href="/posts" class="item">
+          Posts
+        </a>
+        <a href="/posts/new" class="item">
+          New Post
+        </a>
+        <% end %>
+        <div class="right item">
+          <% if !@current_user %>
+          <a href="/sessions/new" class="item">
+            Log In
           </a>
-          <a href="/posts" class="item">
-            Posts
+          <a href="/users/new" class="item">
+            Sign Up
           </a>
-          <div class="right menu">
-            <a href="/sessions/new" class="item">
-              Log In
-            </a>
-            <a href="/users/new" class="item">
-              Sign Up
-            </a>
-          </div>
+          <% else %>
+          <a href="/users/<%= @current_user.id %>" class="item">
+            Welcome <%= @current_user.first_name.capitalize  %>
+          </a>
+          <%= link_to 'Log out', "/sessions/null", method: :delete, class: "item" %>
+          <% end %>
         </div>
       </div>
     </div>
 
-
-    <!-- <div class="ui vertical inverted left visible sidebar menu"> 
-      <a class="item">
-        <i class="home icon"></i>
-        Home
-      </a>
-      <a class="item">
-        <i class="block layout icon"></i>
-        Topics
-      </a>
-  </div> -->
-  <div class="main">
-    <div class="ui container">
+    <div class="ui main text container">
 
       <div id="konami"></div>
       <%= yield %>
       
     </div>
+
+    <div class="ui inverted vertical footer segment">
+      <div class="ui center aligned container">
+        <div class="ui stackable inverted divided grid">
+          <div class="six wide column">
+            <h4 class="ui inverted header">Here are the Creators</h4>
+            <div class="ui inverted link list">
+              <span>You can check us out on GitHub</span>
+            </div>
+          </div>
+          <div class="two wide column">
+            <h4 class="ui inverted header">Alastair Gilles</h4>
+            <div class="ui inverted link list">
+              <a href="https://github.com/ffgi-es" class="item">GitHub</a>
+            </div>
+          </div>
+          <div class="two wide column">
+            <h4 class="ui inverted header">Hisham Bokhari</h4>
+            <div class="ui inverted link list">
+              <a href="https://github.com/hishambokhari" class="item">GitHub</a>
+            </div>
+          </div>
+          <div class="two wide column">
+            <h4 class="ui inverted header">Jonathan Palma</h4>
+            <div class="ui inverted link list">
+              <a href="https://github.com/JonathanPalma-code" class="item">GitHub</a>
+            </div>
+          </div>
+          <div class="two wide column">
+            <h4 class="ui inverted header">Kealan Heena</h4>
+            <div class="ui inverted link list">
+              <a href="https://github.com/kealanheena" class="item">GitHub</a>
+            </div>
+          </div>
+          <div class="two wide column">
+            <h4 class="ui inverted header">Sam Folorunsho</h4>
+            <div class="ui inverted link list">
+              <a href="https://github.com/samfolo" class="item">GitHub</a>
+            </div>
+          </div>
+        </div>
+        <div class="ui inverted section divider"></div>
+        <%= image_tag "acebook_logo.png", class: "ui centered mini image" %>
+        <div class="ui horizontal inverted small divided link list">
+          <a href="#" class="item">Terms and Conditions</a>
+          <a href="#" class="item">Privacy Policy</a>
+        </div>
+      </div>
+    </div>
   </div>
   </body>
 </html>
+
+
