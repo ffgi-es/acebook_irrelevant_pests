@@ -3,7 +3,7 @@ def sign_up(first_name: 'heen',
             email: 'bean@gmail.com',
             password: 'password',
             password_confirmation: 'password')
-  visit root_path
+  visit "/"
   click_on "Sign up"
   fill_in "first_name", with: first_name
   fill_in "last_name", with: last_name
@@ -15,7 +15,7 @@ def sign_up(first_name: 'heen',
 end
 
 def log_in
-  visit root_path
+  visit "/"
   click_on 'Log in'
   fill_in 'email', with: "bean@gmail.com"
   fill_in 'password', with: 'password'
@@ -23,7 +23,7 @@ def log_in
 end
 
 def sign_up_2
-  visit root_path
+  visit "/"
   click_on "Sign up"
   fill_in "first_name", with: "Sam"
   fill_in "last_name", with: "F"
@@ -35,7 +35,7 @@ def sign_up_2
 end
 
 def log_in_2
-  visit root_path
+  visit "/"
   click_on 'Log in'
   fill_in 'email', with: "sam@example.com"
   fill_in 'password', with: 'password'

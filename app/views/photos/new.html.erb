@@ -1,0 +1,5 @@
+<%= form_for :photo do |form| %>
+  <%= form.file_field :image, name: "image" %>
+  <%= form.text_area :description, name: "Description" %>
+  <%= form.submit :Upload, name: "Upload" %>
+<% end %>
