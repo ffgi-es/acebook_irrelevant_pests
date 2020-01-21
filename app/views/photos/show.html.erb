@@ -1,0 +1,11 @@
+<p><%= @walls_user.first_name %> <%= @walls_user.last_name %> Photos</p>
+<div class="ui grid">
+  <% @photos.reverse.each do |photo| %>
+
+      <div class="four wide column">
+        <%= image_tag photo.image, class: "photo" %><br>
+        <small><%= photo.description %></small>
+      </div>
+
+  <% end %>
+</div>

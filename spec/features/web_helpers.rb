@@ -38,6 +38,10 @@ def log_in_2
   click_button 'Log in'
 end
 
+def logout
+  click_on 'Log out'
+end
+
 def post_picture_of_plane
   click_on 'New photo'
   attach_file 'image', 'spec/images/forest.jpeg'
