@@ -14,11 +14,11 @@ def sign_up(first_name: 'heen',
   click_on "Submit"
 end
 
-def log_in
+def log_in(user = nil)
   visit "/"
   click_on 'Log in'
-  fill_in 'email', with: "bean@gmail.com"
-  fill_in 'password', with: 'password'
+  fill_in 'email', with: user&.email || "bean@gmail.com"
+  fill_in 'password', with: user&.password || 'password'
   click_button 'Log in'
 end
 
