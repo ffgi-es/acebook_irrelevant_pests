@@ -11,15 +11,15 @@
 
 <% @current_user_posts.each do |post| %>
   <% if session[:invalid_edit] && session[:invalid_edit_id].to_i == post.id %>
-    <p style='color: red;'>You cannot update another user's post</p>
+    <p class='ui red message'>You cannot update another user's post</p>
   <% end %>
   
   <% if session[:invalid_delete] && session[:invalid_delete_id].to_i == post.id %>
-    <p style='color: red;'>You cannot delete another user's post</p>
+    <p class='ui red message'>You cannot delete another user's post</p>
   <% end %>
 
   <% if session[:over_ten_minutes] && session[:over_ten_minutes_id].to_i == post.id %>
-    <p style='color: red;'>Post can no longer be edited.</p>
+    <p class='ui red message'>Post can no longer be edited.</p>
   <% end %>
   <p><%= post.message %></p><br/>
   <p><%= post.created_at.strftime("posted on %d/%m/%Y at %H:%M") %></p><br/>

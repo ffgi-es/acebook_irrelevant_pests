@@ -14,11 +14,11 @@
     <% end %>
     <!-- <div class="ui container post"> -->
       <% if session[:over_ten_minutes] && session[:over_ten_minutes_id].to_i == post.id %>
-        <p style='color: red;'>Post can no longer be edited.</p>
+        <p class="ui red message">Post can no longer be edited.</p>
       <% end %>
 
       <p><%= post.message %></p><br/>
-      <p><%= "Posted by" %> <%= link_to "#{@post_owner.first_name} #{@post_owner.last_name}","/users/#{@post_owner.id}" %> <%=post.created_at.strftime("on %d/%m/%Y at %H:%M") %></p><br/>
+      <small><%= "Posted by" %> <%= link_to "#{@post_owner.first_name} #{@post_owner.last_name}","/users/#{@post_owner.id}" %> <%=post.created_at.strftime("on %d/%m/%Y at %H:%M") %></small><br/>
       <%= link_to "Edit", edit_post_path(post.id), class: "ui inverted secondary button"%>
       <%= link_to "Delete", post_path(post.id), method: "delete", class: "ui inverted red button" %>
     </div>

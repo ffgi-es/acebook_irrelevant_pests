@@ -33,3 +33,16 @@ div.container.post {
   margin: 2.5em;
   text-align: center;
 }
+
+/* animate {
+  -webkit-animation-name: konami;
+  -webkit-animation-duration: 8s;
+  animation-name: konami;
+  animation-duration: 3s;
+  animation-delay: 0.5s;
+}
+
+@keyframes konami {
+  0%   {transform: rotate(-180deg);}
+  100% {transform: rotate(0deg);}
+} */
