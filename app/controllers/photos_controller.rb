@@ -11,6 +11,11 @@ class PhotosController < ApplicationController
     @photos = Photo.all
   end
 
+  def show
+    @photos = Photo.where(user_id: params[:id])
+    @walls_user = User.find(params[:id])
+  end
+
   private
 
   def photo_params

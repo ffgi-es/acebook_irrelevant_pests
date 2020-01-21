@@ -10,10 +10,16 @@ p {
 
 body {
   margin-top: 8em;
+  margin-bottom: 10em;
 }
 
 span {
   margin-left: 1em;
+}
+
+.photo {
+  height: 150px;
+  display: inline;
 }
 
 .wrapper {

@@ -41,3 +41,7 @@ def log_in_2
   fill_in 'password', with: 'password'
   click_button 'Log in'
 end
+
+def logout
+  click_on 'Log out'
+end

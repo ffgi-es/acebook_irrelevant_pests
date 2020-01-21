@@ -3,6 +3,7 @@
 <% if @other_user %> 
   <%= link_to 'New post', "/posts/#{@current_user.id}/new",  class: "ui inverted secondary button" %>
   <%= link_to 'Profile', "/users/#{session[:id]}", class: "ui inverted secondary button" %>
+  <%= link_to 'View photos', "/photos/#{@current_user.id}", class: "ui inverted secondary button" %>
   <p><%= @current_user.first_name %>'s wall</p>
 <% else  %>
   <%= link_to 'New post', new_post_path,  class: "ui inverted secondary button" %>
