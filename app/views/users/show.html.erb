@@ -3,10 +3,12 @@
 <% if @other_user %> 
   <%= link_to 'New post', "/posts/#{@current_user.id}/new",  class: "ui inverted secondary button" %>
   <%= link_to 'Profile', "/users/#{session[:id]}", class: "ui inverted secondary button" %>
+  <%= link_to 'View photos', "/photos/#{@current_user.id}", class: "ui inverted secondary button" %>
   <p><%= @current_user.first_name %>'s wall</p>
 <% else  %>
   <%= link_to 'New post', new_post_path,  class: "ui inverted secondary button" %>
   <%= link_to 'New photo', new_photo_path,  class: "ui inverted secondary button" %>
+  <%= link_to 'View photos', photo_path, class: "ui inverted secondary button" %>
   <%= link_to 'Settings', '/settings',  class: "ui inverted secondary button" %>
   <p>Welcome <%= @current_user.first_name %>!</p>
 <% end %>
@@ -15,17 +17,17 @@
   <%= image_tag @current_user.profile_picture, visibility: 'visible' %>
 <% end %>
 
-<% @current_user_posts.each do |post| %>
+<% @current_user_posts.reverse.each do |post| %>
   <% if session[:invalid_edit] && session[:invalid_edit_id].to_i == post.id %>
-    <p style='color: red;'>You cannot update another user's post</p>
+    <p class="ui red message">You cannot update another user's post</p>
   <% end %>
   
   <% if session[:invalid_delete] && session[:invalid_delete_id].to_i == post.id %>
-    <p style='color: red;'>You cannot delete another user's post</p>
+    <p class="ui red message">You cannot delete another user's post</p>
   <% end %>
 
   <% if session[:over_ten_minutes] && session[:over_ten_minutes_id].to_i == post.id %>
-    <p style='color: red;'>Post can no longer be edited.</p>
+    <p class="ui red message">Post can no longer be edited.</p>
   <% end %>
   <p><%= post.message %></p><br/>
   <p><%= post.created_at.strftime("posted on %d/%m/%Y at %H:%M") %></p><br/>

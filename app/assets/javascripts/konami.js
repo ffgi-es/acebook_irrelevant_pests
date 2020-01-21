@@ -15,5 +15,5 @@ onKonamiCode(function() {
   var element = document.getElementById("konami");
   window.scrollTo(0, 0);
   element.innerHTML = '<img src="https://i.imgflip.com/1jng63.jpg" class="ui fluid image">'
-  alert("FAKE NEWS!!!");
+  // alert("FAKE NEWS!!!");
 });
