@@ -19,10 +19,10 @@ describe 'deleting photo', type: :feature do
   scenario 'trying to delete other peoples photos' do
     click_on 'Log out'
     sign_up
-    visit "/users/#{user.id}/photos"
+    visit user_photos_path(user.id)
     click_on "Delete"
     expect(page).to have_content "You cannot edit other peoples photos"
-    expect(page).to have_current_path "/users/#{user.id}/photos"
+    expect(page).to have_current_path user_photos_path(user.id)
     expect(page).to have_css "img[src*='forest.jpeg']"
     expect(page).to have_content "Plane in a forest"
   end
