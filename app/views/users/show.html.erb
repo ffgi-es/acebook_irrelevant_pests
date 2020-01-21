@@ -12,6 +12,14 @@
   <p>Welcome <%= @current_user.first_name %>!</p>
 <% end %>
 
+  <%= link_to 'Settings', '/settings',  class: "ui inverted secondary button" %>
+  <p>Welcome <%= @current_user.first_name %>!</p>
+<% end %>
+
+<%  if @current_user.profile_picture.attached? %>
+  <%= image_tag @current_user.profile_picture, visibility: 'visible' %>
+<% end %>
+
 <% @current_user_posts.reverse.each do |post| %>
   <% if session[:invalid_edit] && session[:invalid_edit_id].to_i == post.id %>
     <p class="ui red message">You cannot update another user's post</p>
