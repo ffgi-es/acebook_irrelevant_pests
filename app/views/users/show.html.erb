@@ -7,7 +7,12 @@
 <% else  %>
   <%= link_to 'New post', new_post_path,  class: "ui inverted secondary button" %>
   <%= link_to 'New photo', new_photo_path,  class: "ui inverted secondary button" %>
+  <%= link_to 'Settings', '/settings',  class: "ui inverted secondary button" %>
   <p>Welcome <%= @current_user.first_name %>!</p>
+<% end %>
+
+<%  if @current_user.profile_picture.attached? %>
+  <%= image_tag @current_user.profile_picture, visibility: 'visible' %>
 <% end %>
 
 <% @current_user_posts.each do |post| %>
@@ -23,7 +28,23 @@
     <p style='color: red;'>Post can no longer be edited.</p>
   <% end %>
   <p><%= post.message %></p><br/>
+  
   <p><%= post.created_at.strftime("posted on %d/%m/%Y at %H:%M") %></p><br/>
+
+  <% @like = Like.find_by({ post_id: post.id, user_id: session[:id] }) %>
+  <% if @like %>
+    <%= link_to 'Unlike', "likes/#{@like.id}", method: :delete,  class: "ui inverted secondary button" %>
+  <% else %>
+    <%= link_to 'Like', "posts/#{post.id}/like",  class: "ui inverted secondary button" %>
+  <% end %>
+
+  <%= @likes = Like.where({ post_id: post.id }).length
+    case @likes
+    when 0 
+    when 1 then '1 Like'
+    else "#{@likes} Likes"
+    end
+  %>
 
   <%= link_to "Edit", edit_post_path(post), class: "ui inverted secondary button"%>
   <%= link_to "Delete", post_path(post.id), method: "delete", class: "ui inverted red button" %>
