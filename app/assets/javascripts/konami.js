@@ -11,22 +11,6 @@ function onKonamiCode(assertion) {
   });
 }
 
-// animation for konami code
-$(document).keydown(function(e) {
-  if(e.which === 65 ||
-     e.which === 76 ||
-     e.which === 65 ||
-     e.which === 83 ||
-     e.which === 84 ||
-     e.which === 65 ||
-     e.which === 73 ||
-     e.which === 82 ||
-     ) {
-    alert("Gotcha!!")
-  }
-  e.preventDefault();
-});
-
 onKonamiCode(function() {
   var element = document.getElementById("konami");
   window.scrollTo(0, 0);
