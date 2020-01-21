@@ -5,21 +5,15 @@ Rails.application.routes.draw do
   root 'sessions#index'
 
   resources :posts
-  resources :users
-  resources :sessions
-  resources :photos
+  get 'posts/:wall_id/new' => 'posts#new', as: :new_wall_post
 
-  post "posts/:id/edit" => "posts#update"
-  get 'posts/:wall_id/new' => 'posts#new'
+  resources :users, only: [:new, :create]
+  get '/:id' => 'users#show', as: :user
+  get '/:id/photos' => 'photos#user', as: :user_photos
   
-  post 'users/new' => 'users#create'
-  get "users/:id" => 'users#show'
-
-  post '/sessions/new' => 'sessions#create'
-
-  post '/photos/new' => 'photos#create'
-  get '/users/:id/photos' => 'photos#user'
-
+  resources :sessions, only: [:new, :index, :create, :destroy]
+  resources :photos
+  
   get '/settings/profile-picture' => 'settings#photos'
   post '/settings/profile-picture' => 'settings#create_photo'
 end

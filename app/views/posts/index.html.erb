@@ -1,4 +1,4 @@
-<%= link_to 'Profile', "/users/#{session[:id]}", class: "ui inverted secondary button" %>
+<%= link_to 'Profile', user_path(session[:id]) , class: "ui inverted secondary button" %>
 <%= link_to 'New post', new_post_path, class: "ui inverted secondary button" %>
 
 <% @posts.reverse.each do |post| %>
@@ -18,7 +18,7 @@
       <% end %>
 
       <p><%= post.message %></p><br/>
-      <p><%= "Posted by" %> <%= link_to "#{@post_owner.first_name} #{@post_owner.last_name}","/users/#{@post_owner.id}" %> <%=post.created_at.strftime("on %d/%m/%Y at %H:%M") %></p><br/>
+      <p><%= "Posted by" %> <%= link_to "#{@post_owner.first_name} #{@post_owner.last_name}", user_path(@post_owner.id) %> <%=post.created_at.strftime("on %d/%m/%Y at %H:%M") %></p><br/>
       <%= link_to "Edit", edit_post_path(post.id), class: "ui inverted secondary button"%>
       <%= link_to "Delete", post_path(post.id), method: "delete", class: "ui inverted red button" %>
     </div>

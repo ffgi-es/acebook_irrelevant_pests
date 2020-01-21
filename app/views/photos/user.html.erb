@@ -1,4 +1,4 @@
-<%= link_to 'Profile', "/users/#{session[:id]}", class: "ui inverted secondary button" %>
+<%= link_to 'Profile', user_path(session[:id]), class: "ui inverted secondary button" %>
 
 <h1><%= @user.first_name %>'s photos</h1>
 <p><%= @photo_edit_error %></p>

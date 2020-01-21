@@ -6,7 +6,7 @@ class PhotosController < ApplicationController
 
   def create
     Photo.create photo_params
-    redirect_to "/users/#{session[:id]}/photos"
+    redirect_to user_photos_path(session[:id])
   end
 
   def user
