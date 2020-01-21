@@ -14,7 +14,7 @@
     <% end %>
     <!-- <div class="ui container post"> -->
       <% if session[:over_ten_minutes] && session[:over_ten_minutes_id].to_i == post.id %>
-        <p style='color: red;'>Post can no longer be edited.</p>
+        <p class="ui red message">Post can no longer be edited.</p>
       <% end %>
 
       <p><%= post.message %></p><br/>
