@@ -8,4 +8,6 @@ class User < ApplicationRecord
   validates :password, confirmation: { case_sensitive: true }
 
   has_secure_password
+  has_many :photos, dependent: :destroy
+  has_many :posts, dependent: :destroy
 end

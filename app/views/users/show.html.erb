@@ -6,6 +6,7 @@
   <p><%= @current_user.first_name %>'s wall</p>
 <% else  %>
   <%= link_to 'New post', new_post_path,  class: "ui inverted secondary button" %>
+  <%= link_to 'New photo', new_photo_path,  class: "ui inverted secondary button" %>
   <p>Welcome <%= @current_user.first_name %>!</p>
 <% end %>
 
