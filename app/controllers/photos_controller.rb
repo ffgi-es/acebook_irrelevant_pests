@@ -11,6 +11,16 @@ class PhotosController < ApplicationController
     @photos = Photo.all
   end
 
+  def edit
+    @photo = Photo.find(params[:id])
+    session[:return_to] ||= request.referer 
+  end
+
+  def update
+    Photo.update(params[:id], description: params[:description])
+    redirect_to session.delete(:return_to)
+  end
+
   private
 
   def photo_params

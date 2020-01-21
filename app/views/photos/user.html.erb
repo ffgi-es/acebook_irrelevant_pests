@@ -2,4 +2,5 @@
 <% @photos.reverse.each do |post| %>
   <%= image_tag post.image %>
   <%= post.description %>
+  <%= link_to "Edit", edit_photo_path(post.id) %>
 <% end %>
