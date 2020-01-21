@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   post 'users/new' => 'users#create'
 
   post '/sessions/new' => 'sessions#create'
-  delete '/sessions/:id' => 'sessions#destroy'
+
   post '/photos/new' => 'photos#create'
   get '/users/:id/photos' => 'photos#user'
 end

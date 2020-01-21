@@ -6,7 +6,7 @@ describe 'viewing_other_users_walls', type: :feature do
     click_on 'Submit'
     click_on 'Log out'
     sign_up_2
-    click_on 'Home'
+    click_on 'Acebook'
     
     click_on 'heen bean'
     expect(page).to have_content "heen's wall"
