@@ -1,5 +1,5 @@
 <!-- <%= link_to 'Log out', "/sessions/#{@current_user.id}", method: :delete, class: "ui inverted secondary button" %> -->
-<%= link_to 'New post', "/posts/#{@current_user.id}/new",  class: "ui inverted secondary button" %>
+<!-- <%= link_to 'New post', "/posts/#{@current_user.id}/new",  class: "ui inverted secondary button" %> -->
 <% if @other_user %> 
   <%= link_to 'New post', "/posts/#{@current_user.id}/new",  class: "ui inverted secondary button" %>
   <%= link_to 'Profile', "/users/#{session[:id]}", class: "ui inverted secondary button" %>
