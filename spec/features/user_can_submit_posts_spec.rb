@@ -4,7 +4,7 @@ require_relative 'web_helpers'
 RSpec.feature "Timeline", type: :feature do
   before do
     sign_up
-    click_on 'Posts'
+    click_on 'Acebook'
     click_on 'New post'
     fill_in "Message", with: "Hello, world!"
     click_on 'Submit'

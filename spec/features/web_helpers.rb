@@ -19,7 +19,7 @@ def log_in
   click_on 'Log in'
   fill_in 'email', with: "bean@gmail.com"
   fill_in 'password', with: 'password'
-  click_on 'Log in'
+  click_button 'Log in'
 end
 
 def sign_up_2
@@ -39,5 +39,5 @@ def log_in_2
   click_on 'Log in'
   fill_in 'email', with: "sam@example.com"
   fill_in 'password', with: 'password'
-  click_on 'Log in'
+  click_button 'Log in'
 end

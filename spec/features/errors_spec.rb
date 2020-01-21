@@ -11,7 +11,7 @@ describe 'error_messages', type: :feature do
   scenario 'error disappears after the user has viewed it' do
     click_on 'Log out'
     sign_up_2
-    click_on 'Posts'
+    click_on 'Acebook'
 
     
     click_on 'Edit'
