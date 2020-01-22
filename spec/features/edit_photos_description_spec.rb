@@ -23,9 +23,9 @@ describe 'editing photo description', type: :feature do
   scenario 'trying to edit other peoples photos' do
     click_on 'Log out'
     sign_up
-    visit "/users/#{user.id}/photos"
+    visit user_photos_path(user.id)
     click_on 'Edit'
     expect(page).to have_content "You cannot edit other peoples photos"
-    expect(page).to have_current_path "/users/#{user.id}/photos"
+    expect(page).to have_current_path user_photos_path(user.id)
   end
 end

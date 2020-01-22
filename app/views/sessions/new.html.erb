@@ -1,4 +1,4 @@
-<%= form_for :user do |f| %>
+<%= form_for :session, url: sessions_path do |f| %>
   Email: <%= f.text_field :email, name: "email" %><br />
   Password: <%= f.password_field :password, name: "password" %><br />
   <%= f.submit :'Log in', name: 'Log in' %><br />

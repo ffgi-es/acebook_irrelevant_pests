@@ -6,7 +6,7 @@ class PhotosController < ApplicationController
 
   def create
     Photo.create photo_params
-    redirect_to "/users/#{session[:id]}/photos"
+    redirect_to user_photos_path(session[:id])
   end
 
   def user
@@ -28,6 +28,11 @@ class PhotosController < ApplicationController
   def destroy
     Photo.delete(params[:id])
     redirect_to request.referer
+  end
+
+  def show
+    @photos = Photo.where(user_id: params[:id])
+    @walls_user = User.find(params[:id])
   end
 
   private

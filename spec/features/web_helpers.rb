@@ -3,8 +3,7 @@ def sign_up(first_name: 'heen',
             email: 'bean@gmail.com',
             password: 'password',
             password_confirmation: 'password')
-  visit '/'
-  click_on 'Sign up'
+  visit new_user_path
   fill_in 'first_name', with: first_name
   fill_in 'last_name', with: last_name
   fill_in 'email', with: email
@@ -15,16 +14,14 @@ def sign_up(first_name: 'heen',
 end
 
 def log_in(user = nil)
-  visit "/"
-  click_on 'Log in'
-  fill_in 'email', with: user&.email || "bean@gmail.com"
+  visit new_session_path
+  fill_in 'email', with: user&.email || 'bean@gmail.com'
   fill_in 'password', with: user&.password || 'password'
   click_button 'Log in'
 end
 
 def sign_up_2
-  visit '/'
-  click_on 'Sign up'
+  visit new_user_path
   fill_in 'first_name', with: 'Sam'
   fill_in 'last_name', with: 'F'
   fill_in 'email', with: 'sam@example.com'
@@ -35,11 +32,14 @@ def sign_up_2
 end
 
 def log_in_2
-  visit '/'
-  click_on 'Log in'
+  visit new_session_path
   fill_in 'email', with: 'sam@example.com'
   fill_in 'password', with: 'password'
   click_button 'Log in'
+end
+
+def logout
+  click_on 'Log out'
 end
 
 def post_picture_of_plane
