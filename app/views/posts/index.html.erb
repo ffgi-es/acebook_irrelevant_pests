@@ -19,6 +19,21 @@
 
       <p><%= post.message %></p><br/>
       <small><%= "Posted by" %> <%= link_to "#{@post_owner.first_name} #{@post_owner.last_name}","/#{@post_owner.id}" %> <%=post.created_at.strftime("on %d/%m/%Y at %H:%M") %></small><br/>
+      
+      <% @like = Like.find_by({ post_id: post.id, user_id: session[:id] }) %>
+      <% if @like %>
+        <%= link_to 'Unlike', delete_like_path(@like.id), method: :delete,  class: "ui inverted secondary button" %>
+      <% else %>
+        <%= link_to 'Like', create_like_path(post.id), method: :post,  class: "ui inverted secondary button" %>
+      <% end %>
+
+      <%= @likes = Like.where({ post_id: post.id }).length
+        case @likes
+        when 0 
+        when 1 then '1 Like'
+        else "#{@likes} Likes"
+        end
+      %>
       <%= link_to "Edit", edit_post_path(post.id), class: "ui inverted secondary button"%>
       <%= link_to "Delete", post_path(post.id), method: "delete", class: "ui inverted red button" %>
     </div>
