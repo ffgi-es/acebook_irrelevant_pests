@@ -6,7 +6,7 @@
 <% else  %>
   <%= link_to 'New post', new_post_path,  class: "ui inverted secondary button" %>
   <%= link_to 'New photo', new_photo_path,  class: "ui inverted secondary button" %>
-  <%= link_to 'View photos', photo_path, class: "ui inverted secondary button" %>
+  <%= link_to 'View photos', "/#{@current_user.id}/photos", class: "ui inverted secondary button" %>
   <%= link_to 'Settings', settings_path,  class: "ui inverted secondary button" %>
   <p>Welcome <%= @current_user.first_name %>!</p>
 <% end %>
@@ -29,7 +29,7 @@
   <% end %>
   <p><%= post.message %></p><br/>
   
-  <p><%= post.created_at.strftime("posted on %d/%m/%Y at %H:%M") %></p><br/>
+  <p id='posted-by'><%= post.created_at.strftime("posted on %d/%m/%Y at %H:%M") %></p><br/>
 
   <% @like = Like.find_by({ post_id: post.id, user_id: session[:id] }) %>
   <% if @like %>

@@ -13,3 +13,7 @@
  *= require_tree .
  *= require_self
  */
+
+ #posted-by {
+   font-size: 15px;
+ }

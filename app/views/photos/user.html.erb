@@ -2,9 +2,17 @@
 
 <h1><%= @user.first_name %>'s photos</h1>
 <p><%= @photo_edit_error %></p>
-<% @photos.reverse.each do |photo| %>
-  <%= image_tag photo.image %>
-  <%= photo.description %>
-  <%= link_to "Edit", edit_photo_path(photo.id) %>
-  <%= link_to "Delete", photo_path(photo.id), method: :delete %>
-<% end %>
+<div id='photo-feed'>
+  <% @photos.reverse.each do |photo| %>
+    <%= image_tag photo.image, class: 'photo-in-album' %>
+    <div id='description-and-controls'>
+      <div id='description'>
+        <%= photo.description %>
+      </div>
+      <div id='controls'>
+        <%= link_to "Edit", edit_photo_path(photo.id), class: 'photo-control' %>
+        <%= link_to "Delete", photo_path(photo.id), method: :delete, class: 'photo-control' %>
+      </div>
+      </div>
+  <% end %>
+</div>
