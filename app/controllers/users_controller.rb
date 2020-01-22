@@ -15,9 +15,7 @@ class UsersController < ApplicationController
       redirect_to user_path(user.id)
     else
       validation_message user.errors.details
-      session[:first_name] = params[:first_name]
-      session[:last_name] = params[:last_name]
-      session[:email] = params[:email]
+      store_sign_up_input
       redirect_to new_user_path
     end
   end
@@ -48,5 +46,11 @@ class UsersController < ApplicationController
     when :confirmation then message << ' does not match'
     end
     session[:validation_message] = message
+  end
+
+  def store_sign_up_input
+    session[:first_name] = params[:first_name]
+    session[:last_name] = params[:last_name]
+    session[:email] = params[:email]
   end
 end
