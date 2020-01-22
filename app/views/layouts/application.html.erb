@@ -29,9 +29,7 @@
               Sign up
             </a>
           <% elsif current_user %>
-            <a href="/users/<%= current_user.id %>" class="item">
-              Welcome <%= current_user.first_name.capitalize  %>
-            </a>
+            <%= link_to "Welcome #{current_user.first_name.capitalize}", user_path(current_user.id), class: "item" %>
             <%= link_to 'Log out', "/sessions/null", method: :delete, class: "item" %>
           <% end %>
         </div>
