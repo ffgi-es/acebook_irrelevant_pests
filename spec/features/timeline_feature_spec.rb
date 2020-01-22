@@ -18,7 +18,7 @@ RSpec.describe "timeline_features", type: :feature do
     click_button "Submit"
     visit posts_path
 
-    expect(page).to have_content("Goodbye! Posted by heen bean on #{time} Edit Delete Hello!")
+    expect(page).to have_content("Goodbye! Posted by heen bean on #{time} Like Edit Delete Hello")
   end
 
   scenario "posts should be displayed in reverse chronological order after being edited" do
@@ -39,7 +39,7 @@ RSpec.describe "timeline_features", type: :feature do
     click_button "Submit"
     visit posts_path 
 
-    expect(page).to have_content("Goodbye! Posted by heen bean on #{time} Edit Delete Hello, World!")
+    expect(page).to have_content("Goodbye! Posted by heen bean on #{time} Like Edit Delete Hello, World!")
   end
 
   scenario "posts should be displayed with line breaks if they have line breaks" do
