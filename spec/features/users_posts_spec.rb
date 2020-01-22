@@ -1,6 +1,6 @@
 require_relative 'web_helpers'
 
-RSpec.describe "only viewing user's posts", typr: :feature do
+RSpec.describe "only viewing user's posts", type: :feature do
   scenario 'a user can only see their posts on their profile' do
     sign_up
     click_link "New post"

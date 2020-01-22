@@ -6,14 +6,13 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(user_params)
-    if @user.save
-      user = User.find_by({ email: params[:email] })
+    user = User.new(user_params)
+    if user.save
       session[:id] = user.id
-      redirect_to "/users/#{user.id}" if user
+      redirect_to user_path(user.id)
     else
-      validation_message @user.errors.details
-      redirect_to '/users/new'
+      validation_message user.errors.details
+      redirect_to new_user_path
     end
   end
 
@@ -22,6 +21,8 @@ class UsersController < ApplicationController
     @current_user_posts = Post.where(user_id: @current_user.id, wall_user_id: nil)
       .or(Post.where(wall_user_id: @current_user.id))
     @other_user = params[:id].to_i != session[:id]
+  rescue ActiveRecord::RecordNotFound
+    render '404'
   end
 
   private 
