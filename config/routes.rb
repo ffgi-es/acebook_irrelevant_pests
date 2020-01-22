@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   
-  resources :likes
+  post "likes/:id" => 'likes#create', as: :create_like
+  delete "likes/:id" => 'likes#destroy', as: :delete_like
+
   resources :settings
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root 'sessions#index'
@@ -23,7 +25,4 @@ Rails.application.routes.draw do
 
   get '/settings/profile-picture' => 'settings#photos'
   post '/settings/profile-picture' => 'settings#create_photo'
-
-  get 'users/posts/:id/like' => 'likes#create'
-  delete 'users/likes/:id' => 'likes#destroy'
 end
