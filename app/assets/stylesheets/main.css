@@ -42,15 +42,22 @@ div.container.post {
   text-align: center;
 }
 
-/* animate {
+.ui.main.text.container {
+  text-align: center;
+}
+
+.animate {
+  border-radius: 10%;
+  margin: 5%;
+  border: 5px double;
+
   -webkit-animation-name: konami;
   -webkit-animation-duration: 8s;
   animation-name: konami;
   animation-duration: 3s;
-  animation-delay: 0.5s;
 }
 
 @keyframes konami {
-  0%   {transform: rotate(-180deg);}
+  0%   {transform: rotate(-720deg);}
   100% {transform: rotate(0deg);}
-} */
+}

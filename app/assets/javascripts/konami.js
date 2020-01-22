@@ -14,6 +14,6 @@ function onKonamiCode(assertion) {
 onKonamiCode(function() {
   var element = document.getElementById("konami");
   window.scrollTo(0, 0);
-  element.innerHTML = '<%= image_tag "app/assets/irrelevant_pest.jpeg", class: "ui fluid image animate" %>'
+  element.innerHTML = '<img class="ui fluid image animate" src="/assets/irrelevant_pests-97ff456474e761eb8f50b682f8b1e50908db805c16947fb6b6239e8a9240b386.jpg">'
   alert("THE IRRELEVANT PESTS!!!");
 });
