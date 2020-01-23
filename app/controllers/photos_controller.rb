@@ -11,7 +11,7 @@ class PhotosController < ApplicationController
 
   def user
     @user = User.find(params[:id])
-    @photos = Photo.all
+    @photos = Photo.where(user_id: params[:id])
     @photo_edit_error = session.delete(:photo_edit_error)
   end
 
