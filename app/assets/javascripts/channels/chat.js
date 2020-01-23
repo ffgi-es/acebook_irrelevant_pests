@@ -1,21 +1,33 @@
 App.chat = App.cable.subscriptions.create("ChatChannel", {
   connected: function() {
-    // Called when the subscription is ready for use on the server
   },
   
   disconnected: function() {
-    // Called when the subscription has been terminated by the server
   },
   
   received: function(data) {
-    // Called when there's incoming data on the websocket for this channel
-    document.getElementById('messages').innerHTML += data.message;
+    const name = document.getElementById('user-name').innerText
+    document.getElementById('messages').innerHTML += `<p>${name} said:</p><p>${data.message}</p>`;
   }
 });
 
 window.onload = function() { 
   document.getElementById('message-button').addEventListener('click', ()=> {
-    App.chat.send({ message: `<p>${document.getElementById('message-field').value}</p>` });
-    // document.getElementById('message-field').value = '';
+    App.chat.send({ 
+      message: 
+      `${document.getElementById('message-field').value}` 
+    });
+    
+    const payload = { 
+        message: document.getElementById('message-field').value,
+    }
+
+    Rails.ajax({
+      url: `/messages?new_message=${payload.message}`,
+      type: 'POST',
+      data: payload,
+    });
+
+    document.getElementById('message-field').value = '';
   });
 }
