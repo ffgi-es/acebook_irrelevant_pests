@@ -6,7 +6,6 @@ services:
 before_script:
 - bundle exec rails db:create
 - bundle exec rails db:migrate
-- mkdir tmp
 - mkdir tmp/pids
 script:
 - bundle exec rspec
