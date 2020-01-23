@@ -10,15 +10,13 @@ p {
 
 body {
   margin-top: 8em;
-  margin-bottom: 10em;
 }
 
-span {
-  margin-left: 1em;
+#home {
+  margin-right: 1em;
 }
 
 .photo {
-  display: inline;
   height: 300px;
 }
 
@@ -42,4 +40,24 @@ span {
 div.container.post {
   margin: 2.5em;
   text-align: center;
+}
+
+.ui.main.text.container {
+  text-align: center;
+}
+
+.animate {
+  border-radius: 10%;
+  margin: 5%;
+  border: 5px double;
+
+  -webkit-animation-name: konami;
+  -webkit-animation-duration: 8s;
+  animation-name: konami;
+  animation-duration: 3s;
+}
+
+@keyframes konami {
+  0%   {transform: rotate(-720deg);}
+  100% {transform: rotate(0deg);}
 }
