@@ -12,12 +12,11 @@ body {
   margin-top: 8em;
 }
 
-span {
-  margin-left: 1em;
+#home {
+  margin-right: 1em;
 }
 
 .photo {
-  display: inline;
   height: 300px;
 }
 
