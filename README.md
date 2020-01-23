@@ -86,6 +86,11 @@ First, clone this repository. Then:
 > bin/rails server # Start the server at localhost:3000
 ```
 
+```
+> brew install redis
+> brew services start redis
+```
+
 ## Team
 
 - Alastair Gilles
