@@ -10,88 +10,15 @@
   </head>
 
   <body>
-  <div class="wrapper">
-    <div class="ui fixed inverted menu">
-      <div class="ui container">
-        <a href="/" class="item">
-          <%= image_tag "acebook_logo.png", class: "logo", id: "home" %>
-          <span>Acebook</span>
-        </a>
-        <!-- <% if current_user %>
-          <%= link_to 'New post', new_post_path, class: "item" %>
-        <% end %> -->
-        <div class="right item">
-          <% if !current_user %>
-            <a href="/sessions/new" class="item">
-              Log in
-            </a>
-            <a href="/users/new" class="item">
-              Sign up
-            </a>
-          <% elsif current_user %>
-            <%= link_to "Welcome #{current_user.first_name.capitalize}", user_path(current_user.id), class: "item" %>
-            <%= link_to 'Log out', "/sessions/null", method: :delete, class: "item" %>
-          <% end %>
-        </div>
+    <div class="wrapper">
+      <%= nav_bar(current_user) %>
+      <div class="ui main text container">
+        <%= content_tag(:div, nil, id: "konami") %>
+        <%= yield %>
       </div>
+      <%= content_tag(:div, nil, class: "footer_whitespace") %>
+      <%= footer %>
     </div>
-
-    <div class="ui main text container">
-
-      <div id="konami"></div>
-      <%= yield %>
-      
-    </div>
-    <div class="footer_whitespace"></div>
-      <div class="ui inverted vertical footer segment">
-        <div class="ui center aligned container">
-          <div class="ui stackable inverted divided grid">
-            <div class="six wide column">
-              <h4 class="ui inverted header">Here are the Creators</h4>
-              <div class="ui inverted link list">
-                <span>You can check us out on GitHub</span>
-              </div>
-            </div>
-            <div class="two wide column">
-              <h4 class="ui inverted header">Alastair Gilles</h4>
-              <div class="ui inverted link list">
-                <a href="https://github.com/ffgi-es" class="item">GitHub</a>
-              </div>
-            </div>
-            <div class="two wide column">
-              <h4 class="ui inverted header">Hisham Bokhari</h4>
-              <div class="ui inverted link list">
-                <a href="https://github.com/hishambokhari" class="item">GitHub</a>
-              </div>
-            </div>
-            <div class="two wide column">
-              <h4 class="ui inverted header">Jonathan Palma</h4>
-              <div class="ui inverted link list">
-                <a href="https://github.com/JonathanPalma-code" class="item">GitHub</a>
-              </div>
-            </div>
-            <div class="two wide column">
-              <h4 class="ui inverted header">Kealan Heena</h4>
-              <div class="ui inverted link list">
-                <a href="https://github.com/kealanheena" class="item">GitHub</a>
-              </div>
-            </div>
-            <div class="two wide column">
-              <h4 class="ui inverted header">Sam Folorunsho</h4>
-              <div class="ui inverted link list">
-                <a href="https://github.com/samfolo" class="item">GitHub</a>
-              </div>
-            </div>
-          </div>
-          <div class="ui inverted section divider"></div>
-          <%= image_tag "acebook_logo.png", class: "ui centered mini image" %>
-          <div class="ui horizontal inverted small divided link list">
-            <a href="#" class="item">Terms and Conditions</a>
-            <a href="#" class="item">Privacy Policy</a>
-          </div>
-        </div>
-      </div>
-  </div>
   </body>
 </html>
 
