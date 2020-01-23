@@ -7,7 +7,7 @@ RSpec.describe 'chat rooms', type: :feature do
     log_in
   end
 
-  scenario 'usrs can chat with eachother', js: true do
+  scenario 'users can chat with each other', js: true do
     click_on 'Acebook'
 
     second_window = open_new_window
