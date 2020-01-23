@@ -27,5 +27,5 @@ coverage
 /storage
 
 geckodriver
-geckodriver-v0.26.0-linux.tar.gz
+geckodriver-v0.26.0-linux64.tar.gz
 /vendor/bundle
