@@ -24,3 +24,8 @@
 coverage
 /coverage
 /storage/*
+/storage
+
+geckodriver
+geckodriver-v0.26.0-linux.tar.gz
+/vendor/bundle
