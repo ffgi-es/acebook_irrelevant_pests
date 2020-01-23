@@ -19,6 +19,9 @@ require 'simplecov'
 require 'rspec/simplecov'
 require 'simplecov-console'
 
+require 'capybara'
+require 'capybara/rspec'
+
 SimpleCov.minimum_coverage 90
 SimpleCov.start 
 RSpec::SimpleCov.start
@@ -27,9 +30,9 @@ SimpleCov.formatter = SimpleCov::Formatter::Console
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 RSpec.configure do |config|
+  Capybara.server = :puma
   config.before(:each, js: true) do
     Capybara.current_driver = :selenium
-    Capybara.server = :puma
   end 
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest
