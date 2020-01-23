@@ -14,7 +14,7 @@ App.chat = App.cable.subscriptions.create("ChatChannel", {
 });
 
 window.onload = function() {
-  document.getElementById('message-button').addEventListener('click', ()=> {
+  document.getElementById('message-button').addEventListener('click', function() {
     App.chat.send({
       message: '<p>' + document.getElementById('message-field').value + '</p>'
     });
