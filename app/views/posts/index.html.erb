@@ -18,19 +18,20 @@
   <div class="ui container post">
     <% @post_owner = User.find(post.user_id) %>
   <div>
-    <% if session[:invalid_edit] && session[:invalid_edit_id].to_i == post.id %>
+    <% if @edit_error_id == post.id %>
       <div class="ui red message">You cannot update another user's post!</div>
     <% end %>
     
-    <% if session[:invalid_delete] && session[:invalid_delete_id].to_i == post.id %>
+    <% if  @delete_error_id == post.id %>
       <div class="ui red message">You cannot delete another user's post</div>
     <% end %>
-    <!-- <div class="ui container post"> -->
-      <% if session[:over_ten_minutes] && session[:over_ten_minutes_id].to_i == post.id %>
+    
+    <div class="ui container post">
+      <% if @ten_minutes_error_id == post.id %>
         <p class="ui red message">Post can no longer be edited.</p>
       <% end %>
 
-      <p><%= post.message %></p><br/>
+      <br><br><p><%= post.message %></p>
       <small id='posted-by'><%= "Posted by" %> <%= link_to "#{@post_owner.first_name} #{@post_owner.last_name}", user_path(@post_owner.id) %> <%=post.created_at.strftime("on %d/%m/%Y at %H:%M") %></small><br/>
       
       <% @like = Like.find_by({ post_id: post.id, user_id: session[:id] }) %>
@@ -49,8 +50,6 @@
       %>
       <%= link_to "Edit", edit_post_path(post.id), class: "ui inverted secondary button"%>
       <%= link_to "Delete", post_path(post.id), method: "delete", class: "ui inverted red button" %>
-    </div>
   </div>
-  <br/>
 <% end %>
 

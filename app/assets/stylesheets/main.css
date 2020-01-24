@@ -16,6 +16,10 @@ body {
   margin-right: 1em;
 }
 
+.form {
+  margin: 1em;
+}
+
 .photo {
   height: 300px;
 }
@@ -25,10 +29,11 @@ body {
   position: relative;
   padding-bottom: 1em;
   min-height: 100%;
+  text-align: center;
 }
 
 .footer_whitespace {
-  height: 14em;
+  height: 17em;
 }
 
 .ui.inverted.vertical.footer.segment {
@@ -42,9 +47,16 @@ div.container.post {
   text-align: center;
 }
 
-.ui.main.text.container {
-  text-align: center;
+.ui.small.image {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  margin-left: 100%; 
+  border-radius: 50%;
+  overflow: hidden;
 }
+
+
 
 .animate {
   border-radius: 10%;
