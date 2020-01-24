@@ -39,7 +39,6 @@ RSpec.describe 'updating_posts', type: :feature do
 
   scenario 'User can delete liked posts' do
     click_on 'Like'
-    p page.text
     click_on 'Delete' 
     
     expect(page).not_to have_content('ilikethings')
