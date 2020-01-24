@@ -35,3 +35,33 @@
 .photo-control {
   padding-left: 20px;
 }
+
+.file-container {
+  overflow: hidden;
+  position: relative;
+  width: 200px;
+}
+
+.file-container [type=file] {
+  cursor: inherit;
+  display: block;
+  font-size: 1px;
+  filter: alpha(opacity=0);
+  min-height: 100%;
+  min-width: 100%;
+  opacity: 0;
+  position: absolute;
+  right: 0;
+  text-align: right;
+  top: 0;
+  z-index: 0;
+}
+
+#file-upload-label {
+  font-size: 70px;
+  background-color: rgba(163, 163, 163, 0.877);
+  color: white;
+  text-align: center;
+  border-radius: 15px;
+  padding: 20px;
+}
