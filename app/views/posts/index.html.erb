@@ -17,16 +17,17 @@
 <% @posts.reverse.each do |post| %>
   <div class="ui container post">
     <% @post_owner = User.find(post.user_id) %>
-
-    <% if session[:invalid_edit] && session[:invalid_edit_id].to_i == post.id %>
+  <div>
+    <% if @edit_error_id == post.id %>
       <div class="ui red message">You cannot update another user's post!</div>
     <% end %>
     
-    <% if session[:invalid_delete] && session[:invalid_delete_id].to_i == post.id %>
+    <% if  @delete_error_id == post.id %>
       <div class="ui red message">You cannot delete another user's post</div>
     <% end %>
-    <!-- <div class="ui container post"> -->
-      <% if session[:over_ten_minutes] && session[:over_ten_minutes_id].to_i == post.id %>
+    
+    <div class="ui container post">
+      <% if @ten_minutes_error_id == post.id %>
         <p class="ui red message">Post can no longer be edited.</p>
       <% end %>
 

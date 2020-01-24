@@ -5,36 +5,36 @@
     <%= image_tag @current_user.profile_picture, visibility: 'visible', class: 'ui small image' %>
   <% end %>
 </div>
-
+  
 <div class='ten wide column'>
   <% if @other_user %> 
-    <h1><%= @current_user.first_name %>'s wall</h1>
     <%= link_to 'New post', new_wall_post_path(@current_user.id),  class: "ui inverted secondary button" %>
     <%= link_to 'Profile', user_path(session[:id]), class: "ui inverted secondary button" %>
     <%= link_to 'View photos', user_photos_path(@current_user.id), class: "ui inverted secondary button" %>
+    <p><%= @current_user.first_name %>'s wall</p>
   <% else  %>
-    <h1>Welcome <%= @current_user.first_name %>!</h1>
     <%= link_to 'New post', new_post_path,  class: "ui inverted secondary button" %>
     <%= link_to 'New photo', new_photo_path,  class: "ui inverted secondary button" %>
     <%= link_to 'View photos', user_photos_path(@current_user.id), class: "ui inverted secondary button" %>
     <%= link_to 'Settings', settings_path,  class: "ui inverted secondary button" %>
+    <p>Welcome <%= @current_user.first_name %>!</p>
   <% end %>
 
   <% @current_user_posts.reverse.each do |post| %>
-    <div class="ui container post">
-      <% if session[:invalid_edit] && session[:invalid_edit_id].to_i == post.id %>
+    <div class='ui container post'>
+      <% if @edit_error_id == post.id %>
         <p class="ui red message">You cannot update another user's post</p>
       <% end %>
-      
-      <% if session[:invalid_delete] && session[:invalid_delete_id].to_i == post.id %>
+
+      <% if @delete_error_id == post.id %>
         <p class="ui red message">You cannot delete another user's post</p>
       <% end %>
 
-      <% if session[:over_ten_minutes] && session[:over_ten_minutes_id].to_i == post.id %>
+      <% if @ten_minutes_error_id == post.id %>
         <p class="ui red message">Post can no longer be edited.</p>
       <% end %>
       <br><br><p><%= post.message %></p>
-      
+
       <small id='posted-by'><%= post.created_at.strftime("posted on %d/%m/%Y at %H:%M") %></small><br/>
 
       <% @like = Like.find_by({ post_id: post.id, user_id: session[:id] }) %>
