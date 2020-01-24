@@ -10,6 +10,15 @@
   </head>
 
   <body>
+    <% if current_user %>
+      <div id='messages'>
+        <div id='user-name'><%= "#{current_user.first_name} #{current_user.last_name}" %></div>
+        <% messages.each do |message| %>
+            <small><%= message.user.first_name %> <%= message.user.last_name %> said:</small>
+            <p><%=message.body%></p>
+        <% end %>
+      </div>
+    <% end %>
     <div class="wrapper">
       <%= nav_bar(current_user) %>
       <div class="ui main text container">

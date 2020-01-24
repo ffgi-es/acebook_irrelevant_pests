@@ -37,7 +37,6 @@ class PostsController < ApplicationController
   def index
     @user = User.find(session[:id])
     @posts = Post.where(wall_user_id: nil).sort_by(&:created_at)
-    @messages = Message.all
     @edit_error = session[:invalid_edit]
     @edit_error_id = session[:invalid_edit_id]
   end

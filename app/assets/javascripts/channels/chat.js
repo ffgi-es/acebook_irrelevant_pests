@@ -6,8 +6,11 @@ App.chat = App.cable.subscriptions.create("ChatChannel", {
   },
 
   received: function(data) {
-    var name = document.getElementById('user-name').innerText
-    document.getElementById('messages').innerHTML += "<p> " + name + " said:</p><p>" + data.message + "</p>";
+    var name = document.getElementById('user-name').innerText;
+    var messages = document.getElementById('messages');
+    console.log(name);
+    messages.innerHTML += "<small> " + name + " said:</small><p>" + data.message + "</p>";
+    messages.scrollTo(0, messages.scrollHeight);
   }
 });
 
@@ -15,11 +18,11 @@ window.onload = function() {
   document.getElementById('message-button').addEventListener('click', function() {
     App.chat.send({ 
       message: 
-      document.getElementById('message-field').value
+      document.getElementById('new_message').value
     });
     
     var payload = { 
-        message: document.getElementById('message-field').value,
+        message: document.getElementById('new_message').value,
     }
 
     Rails.ajax({
@@ -27,6 +30,6 @@ window.onload = function() {
       type: 'POST',
       data: payload,
     });
-    document.getElementById('message-field').value = '';
+    document.getElementById('new_message').value = '';
   });
 }

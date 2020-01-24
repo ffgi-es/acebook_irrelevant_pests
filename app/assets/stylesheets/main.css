@@ -9,7 +9,7 @@ p {
 }
 
 body {
-  margin-top: 8em;
+  margin-top: 5em;
 }
 
 #home {
@@ -37,6 +37,10 @@ body {
   width: 100%;
 }
 
+.ui.action.input input {
+  border-radius: 0;
+}
+
 div.container.post {
   margin: 2.5em;
   text-align: center;
@@ -60,4 +64,24 @@ div.container.post {
 @keyframes konami {
   0%   {transform: rotate(-720deg);}
   100% {transform: rotate(0deg);}
+}
+
+#messages {
+  text-align: center;
+  height: 15em;
+  width: 36%;
+  min-width: 35em;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border: 3px solid rgba(0,0,0,.87);
+  font-size: 16px/26px;
+  overflow: auto;
+  margin: auto;
+  margin-bottom: 1.5em;
+  /* margin-top: 2em; */
+}
+
+#user-name {
+  visibility: hidden;
+  display: none;
 }
