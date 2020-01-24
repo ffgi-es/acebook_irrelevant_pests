@@ -3,11 +3,18 @@ module HtmlHelper
     content_tag :div, class: ["ui", "fixed", "inverted", "menu"] do
       content_tag :div, class: ["ui", "container"] do
         concat(link_to(image_tag("acebook_logo.png", class: "logo", id: "home") + 
-        "Acebook", "/", class: "item"))        
+        "Acebook", "/", class: "item"))   
         concat content_tag(:div, class: ["right", "item"]) {
           nav_if_else(current_user)
         }
       end
+    end
+  end
+
+  def scrollbox
+    content_tag :div, class: ["ui", "action", "input"] do
+      text_field_tag(:new_message) +
+      submit_tag("Send", name: 'Send', id: 'message-button', class: 'ui button')
     end
   end
 
@@ -16,6 +23,7 @@ module HtmlHelper
       link_to("Log in", "/sessions/new", class: "item") +
       link_to("Sign up", "/users/new", class: "item")
     else
+      scrollbox +
       link_to("Welcome #{current_user.first_name}!", "/#{current_user.id}", class: "item") +
       link_to('Log out', "/sessions/null", method: :delete, class: "item")
     end
@@ -66,8 +74,8 @@ module HtmlHelper
      "ui", "horizontal", "inverted",
      "small", "divided", "link", "list"
     ]) {
-      link_to "Terms and Conditions", "#", class: "item"
-      link_to "Privacy Policy", "#", class: "item"
+      link_to("Terms and Conditions", "#", class: "item") +
+      link_to("Privacy Policy", "#", class: "item")
     }
   end
 end

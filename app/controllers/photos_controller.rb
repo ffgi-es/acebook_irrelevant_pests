@@ -29,6 +29,11 @@ class PhotosController < ApplicationController
     Photo.delete(params[:id])
     redirect_to request.referer
   end
+
+  def show
+    @photos = Photo.where(user_id: params[:id])
+    @walls_user = User.find(params[:id])
+  end
   
   private
 
