@@ -24,7 +24,7 @@ class PostsController < ApplicationController
 
   def update
     Post.update(params[:id], :message => params[:post_message])
-    redirect_to posts_path
+    redirect_back fallback_location: root_path
   end
 
   def destroy
@@ -85,12 +85,12 @@ class PostsController < ApplicationController
 
   def handle_edit_error(post)
     edit_error(post)
-    redirect_to '/posts'
+    redirect_back fallback_location: root_path
   end
 
   def handle_time_out_error(post)
     time_out_error(post)
-    redirect_to '/posts'   
+    redirect_back fallback_location: root_path   
   end
 
   def reset_errors
