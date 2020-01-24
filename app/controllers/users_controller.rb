@@ -2,10 +2,6 @@ class UsersController < ApplicationController
   skip_before_action :authorised, only: [:create, :new]
 
   def new
-    @validation_message = session.delete :validation_message
-    @first_name = session.delete :first_name
-    @last_name = session.delete :last_name
-    @email = session.delete :email
   end
 
   def create
@@ -16,7 +12,7 @@ class UsersController < ApplicationController
     else
       validation_message user.errors.details
       store_sign_up_input
-      redirect_to new_user_path
+      redirect_to root_path
     end
   end
 

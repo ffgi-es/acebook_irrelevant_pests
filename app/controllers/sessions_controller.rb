@@ -5,6 +5,10 @@ class SessionsController < ApplicationController
     if session[:id]
       redirect_to posts_path
     else
+      @validation_message = session.delete :validation_message
+      @first_name = session.delete :first_name
+      @last_name = session.delete :last_name
+      @email = session.delete :email
       session.clear
     end
   end
