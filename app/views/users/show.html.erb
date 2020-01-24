@@ -1,53 +1,65 @@
-<% if @other_user %> 
-  <%= link_to 'New post', new_wall_post_path(@current_user.id),  class: "ui inverted secondary button" %>
-  <%= link_to 'Profile', user_path(session[:id]), class: "ui inverted secondary button" %>
-  <%= link_to 'View photos', user_photos_path(@current_user.id), class: "ui inverted secondary button" %>
-  <p><%= @current_user.first_name %>'s wall</p>
-<% else  %>
-  <%= link_to 'New post', new_post_path,  class: "ui inverted secondary button" %>
-  <%= link_to 'New photo', new_photo_path,  class: "ui inverted secondary button" %>
-  <%= link_to 'View photos', user_photos_path(@current_user.id), class: "ui inverted secondary button" %>
-  <%= link_to 'Settings', settings_path,  class: "ui inverted secondary button" %>
-  <p>Welcome <%= @current_user.first_name %>!</p>
-<% end %>
+<div class="ui grid">
 
-<%  if @current_user.profile_picture.attached? %>
-  <%= image_tag @current_user.profile_picture, visibility: 'visible' %>
-<% end %>
-
-<% @current_user_posts.reverse.each do |post| %>
-  <% if @edit_error_id == post.id %>
-    <p class="ui red message">You cannot update another user's post</p>
+<div class='three wide column'>
+  <%  if @current_user.profile_picture.attached? %>
+    <%= image_tag @current_user.profile_picture, visibility: 'visible', class: 'ui small image' %>
   <% end %>
+</div>
   
-  <% if @delete_error_id == post.id %>
-    <p class="ui red message">You cannot delete another user's post</p>
+<div class='ten wide column'>
+  <% if @other_user %> 
+    <%= link_to 'New post', new_wall_post_path(@current_user.id),  class: "ui inverted secondary button" %>
+    <%= link_to 'Profile', user_path(session[:id]), class: "ui inverted secondary button" %>
+    <%= link_to 'View photos', user_photos_path(@current_user.id), class: "ui inverted secondary button" %>
+    <p><%= @current_user.first_name %>'s wall</p>
+  <% else  %>
+    <%= link_to 'New post', new_post_path,  class: "ui inverted secondary button" %>
+    <%= link_to 'New photo', new_photo_path,  class: "ui inverted secondary button" %>
+    <%= link_to 'View photos', user_photos_path(@current_user.id), class: "ui inverted secondary button" %>
+    <%= link_to 'Settings', settings_path,  class: "ui inverted secondary button" %>
+    <p>Welcome <%= @current_user.first_name %>!</p>
   <% end %>
 
-  <% if @ten_minutes_error_id == post.id %>
-    <p class="ui red message">Post can no longer be edited.</p>
+  <% @current_user_posts.reverse.each do |post| %>
+    <div class='ui container post'>
+      <% if @edit_error_id == post.id %>
+        <p class="ui red message">You cannot update another user's post</p>
+      <% end %>
+
+      <% if @delete_error_id == post.id %>
+        <p class="ui red message">You cannot delete another user's post</p>
+      <% end %>
+
+      <% if @ten_minutes_error_id == post.id %>
+        <p class="ui red message">Post can no longer be edited.</p>
+      <% end %>
+      <br><br><p><%= post.message %></p>
+
+      <small id='posted-by'><%= post.created_at.strftime("posted on %d/%m/%Y at %H:%M") %></small><br/>
+
+      <% @like = Like.find_by({ post_id: post.id, user_id: session[:id] }) %>
+      <% if @like %>
+        <%= link_to 'Unlike', delete_like_path(@like.id), method: :delete,  class: "ui inverted secondary button" %>
+      <% else %>
+        <%= link_to 'Like', create_like_path(post.id), method: :post,  class: "ui inverted secondary button" %>
+      <% end %>
+
+      <%= @likes = Like.where({ post_id: post.id }).length
+        case @likes
+        when 0 
+        when 1 then '1 Like'
+        else "#{@likes} Likes"
+        end
+      %>
+
+      <%= link_to "Edit", edit_post_path(post), class: "ui inverted secondary button"%>
+      <%= link_to "Delete", post_path(post.id), method: "delete", class: "ui inverted red button" %>
+
+      <br>
+    </div>
   <% end %>
-  <p><%= post.message %></p><br/>
-  
-  <p id='posted-by'><%= post.created_at.strftime("posted on %d/%m/%Y at %H:%M") %></p><br/>
+</div>
 
-  <% @like = Like.find_by({ post_id: post.id, user_id: session[:id] }) %>
-  <% if @like %>
-    <%= link_to 'Unlike', delete_like_path(@like.id), method: :delete,  class: "ui inverted secondary button" %>
-  <% else %>
-    <%= link_to 'Like', create_like_path(post.id), method: :post,  class: "ui inverted secondary button" %>
-  <% end %>
+<div class='three wide column'></div>
 
-  <%= @likes = Like.where({ post_id: post.id }).length
-    case @likes
-    when 0 
-    when 1 then '1 Like'
-    else "#{@likes} Likes"
-    end
-  %>
-
-  <%= link_to "Edit", edit_post_path(post), class: "ui inverted secondary button"%>
-  <%= link_to "Delete", post_path(post.id), method: "delete", class: "ui inverted red button" %>
-
-  <br>
-<% end %>
+</div>

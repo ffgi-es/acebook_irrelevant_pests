@@ -23,7 +23,7 @@ class PostsController < ApplicationController
 
   def update
     Post.update(params[:id], :message => params[:post_message])
-    redirect_to posts_path
+    redirect_back fallback_location: root_path
   end
 
   def destroy
