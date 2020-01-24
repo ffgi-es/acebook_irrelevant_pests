@@ -50,7 +50,6 @@ class PostsController < ApplicationController
       delete_error(post)
     else
       Post.destroy(params[:id])
-      reset_errors
     end
   end
 
