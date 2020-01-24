@@ -1,10 +1,18 @@
 <%= link_to 'Profile', user_path(session[:id]) , class: "ui inverted secondary button" %>
 <%= link_to 'New post', new_post_path, class: "ui inverted secondary button" %>
-<div class="form">
-  <div id='messages'></div>
-  <input type='text' name='new_message', id='message-field'>
-  <button name='Send' id='message-button'>Send</button>
+
+<div id='messages'>
+  <div id='user-name' style='visibility: hidden;'><%= "#{@user.first_name} #{@user.last_name}" %></div>
+  <% @messages.each do |message| %>
+    <% @message_owner = User.find(message.user_id) %>
+    <p>
+      <p><%= "#{@message_owner.first_name} #{@message_owner.last_name} said:"%></p>
+      <p><%=message.body%></p>
+    </p>
+  <% end %>
 </div>
+<input type='text' name='new_message' id='message-field'>
+<button name='Send', id='message-button' type='submit'>Send</button>
 
 <% @posts.reverse.each do |post| %>
   <div class="ui container post">
