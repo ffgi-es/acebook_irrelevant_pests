@@ -1,4 +1,8 @@
 describe 'Sign up Validation Error messages', type: :feature do
+
+  before do
+    visit root_path
+  end
   
   describe 'No first name' do
 

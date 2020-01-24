@@ -2,10 +2,6 @@ class UsersController < ApplicationController
   skip_before_action :authorised, only: [:create, :new]
 
   def new
-    @validation_message = session.delete :validation_message
-    @first_name = session.delete :first_name
-    @last_name = session.delete :last_name
-    @email = session.delete :email
   end
 
   def create
@@ -16,15 +12,13 @@ class UsersController < ApplicationController
     else
       validation_message user.errors.details
       store_sign_up_input
-      redirect_to new_user_path
+      redirect_to root_path
     end
   end
 
   def show
-    @current_user = User.find(params[:id])
-    @current_user_posts = Post.where(user_id: @current_user.id, wall_user_id: nil)
-      .or(Post.where(wall_user_id: @current_user.id))
-    @other_user = params[:id].to_i != session[:id]
+    set_user_info
+    set_errors
   rescue ActiveRecord::RecordNotFound
     render '404'
   end
@@ -52,5 +46,18 @@ class UsersController < ApplicationController
     session[:first_name] = params[:first_name]
     session[:last_name] = params[:last_name]
     session[:email] = params[:email]
+  end
+
+  def set_errors
+    @edit_error_id = session.delete(:invalid_edit_id).to_i
+    @delete_error_id = session.delete(:invalid_delete_id).to_i
+    @ten_minutes_error_id = session.delete(:over_ten_minutes_id).to_i
+  end
+
+  def set_user_info
+    @current_user = User.find(params[:id])
+    @current_user_posts = Post.where(user_id: @current_user.id, wall_user_id: nil)
+      .or(Post.where(wall_user_id: @current_user.id))
+    @other_user = params[:id].to_i != session[:id]
   end
 end

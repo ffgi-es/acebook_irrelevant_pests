@@ -21,10 +21,10 @@
     <% end %>
     <div class="wrapper">
       <%= nav_bar(current_user) %>
-      <div class="ui main text container">
+      <!-- <div class="ui main text container"> -->
         <%= content_tag(:div, nil, id: "konami") %>
         <%= yield %>
-      </div>
+      <!-- </div> -->
       <%= content_tag(:div, nil, class: "footer_whitespace") %>
       <%= footer %>
     </div>
