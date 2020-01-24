@@ -18,12 +18,13 @@ class PostsController < ApplicationController
 
   def edit
     @post = Post.find(params[:id])
+    session[:return_path] = request.referer
     handle_errors(@post)
   end
 
   def update
     Post.update(params[:id], :message => params[:post_message])
-    redirect_back fallback_location: root_path
+    redirect_to session.delete(:return_path)
   end
 
   def destroy
