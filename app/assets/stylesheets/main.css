@@ -69,6 +69,10 @@ div.container.post {
   animation-duration: 3s;
 }
 
+textarea {
+  resize: none;
+}
+
 @keyframes konami {
   0%   {transform: rotate(-720deg);}
   100% {transform: rotate(0deg);}

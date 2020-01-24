@@ -3,7 +3,7 @@ def sign_up(first_name: 'heen',
             email: 'bean@gmail.com',
             password: 'password',
             password_confirmation: 'password')
-  visit new_user_path
+  visit root_path
   fill_in 'first_name', with: first_name
   fill_in 'last_name', with: last_name
   fill_in 'email', with: email
@@ -21,7 +21,7 @@ def log_in(user = nil)
 end
 
 def sign_up_2
-  visit new_user_path
+  visit root_path
   fill_in 'first_name', with: 'Sam'
   fill_in 'last_name', with: 'F'
   fill_in 'email', with: 'sam@example.com'
