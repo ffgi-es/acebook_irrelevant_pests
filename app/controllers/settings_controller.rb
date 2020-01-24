@@ -8,6 +8,7 @@ class SettingsController < ApplicationController
 
   def create_photo
     @user = User.find(session[:id])
+    @user.profile_picture.purge
     @user.profile_picture.attach params[:new_profile_picture]
     redirect_to user_path session[:id]
   end
