@@ -49,7 +49,7 @@ class PostsController < ApplicationController
     if session[:id].to_i != post.user_id
       delete_error(post)
     else
-      Post.delete(params[:id])
+      Post.destroy(params[:id])
     end
   end
 
