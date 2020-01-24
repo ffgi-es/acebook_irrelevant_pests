@@ -16,15 +16,15 @@
 <% end %>
 
 <% @current_user_posts.reverse.each do |post| %>
-  <% if session[:invalid_edit] && session[:invalid_edit_id].to_i == post.id %>
+  <% if session[:invalid_edit_id].to_i == post.id && session.delete(:invalid_edit) %>
     <p class="ui red message">You cannot update another user's post</p>
   <% end %>
   
-  <% if session[:invalid_delete] && session[:invalid_delete_id].to_i == post.id %>
+  <% if session[:invalid_delete_id].to_i == post.id && session.delete(:invalid_delete) %>
     <p class="ui red message">You cannot delete another user's post</p>
   <% end %>
 
-  <% if session[:over_ten_minutes] && session[:over_ten_minutes_id].to_i == post.id %>
+  <% if session[:over_ten_minutes_id].to_i == post.id && session.delete(:over_ten_minutes) %>
     <p class="ui red message">Post can no longer be edited.</p>
   <% end %>
   <p><%= post.message %></p><br/>

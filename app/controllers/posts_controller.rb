@@ -46,7 +46,7 @@ class PostsController < ApplicationController
 
   def edit_error(post)
     session[:invalid_edit] = true
-    session[:invalid_edit_id] = post.id.to_s
+    session[:invalid_edit_id] = post.id
   end
 
   def handle_delete(post)
@@ -86,12 +86,12 @@ class PostsController < ApplicationController
 
   def handle_edit_error(post)
     edit_error(post)
-    redirect_to '/posts'
+    redirect_back fallback_location: root_path
   end
 
   def handle_time_out_error(post)
     time_out_error(post)
-    redirect_to '/posts'   
+    redirect_back fallback_location: root_path
   end
 
   def reset_errors
