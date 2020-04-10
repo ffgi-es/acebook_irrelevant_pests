@@ -4,6 +4,8 @@
 
 This is a facebook clone built by the Irrelevant Pests team at Makers Academy. It is built on Ruby on Rails.
 
+<img src="img/acebook-collage.png"/>
+
 ## Resources
 
 0. The [website](https://acebook-irrelevant-pests.herokuapp.com) in production.
